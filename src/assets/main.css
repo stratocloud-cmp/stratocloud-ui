@@ -1,0 +1,16 @@
+#app {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font-family: 'Microsoft Yahei', "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+
+}
+
+.el-table {
+  transform: scale(1);
+}
