@@ -1,7 +1,7 @@
 <script setup>
 import StratoTable from '@/components/StratoTable.vue';
 import { describeTenants, createTenant, updateTenant, disableTenants, enableTenants, deleteTenants } from '@/api/tenant'
-import { ElInput, ElNotification, ElPopconfirm, ElTableColumn } from 'element-plus';
+import { ElInput, ElPopconfirm, ElTableColumn } from 'element-plus';
 import { ref } from 'vue';
 import StratoButton from '@/components/StratoButton.vue';
 import StratoDrawer from '@/components/StratoDrawer.vue';
@@ -33,6 +33,7 @@ function getSelectedIds(){
 }
 
 function onOpenDrawer(){
+	createTenantFormData.value = {}
     drawerFlag.value = true
 }
 
@@ -46,9 +47,9 @@ function onOpenUpdateDrawer(selectedTenant){
 }
 
 function onSave(){
-    createTenantFormRef.value.validate((valid, fields)=>{
+    createTenantFormRef.value.validate((valid)=>{
         if(!valid) return
-        createTenant(createTenantFormData.value).then(resp => {
+        createTenant(createTenantFormData.value).then(() => {
             tableRef.value.fetchData()
             drawerFlag.value = false
         })
@@ -56,9 +57,9 @@ function onSave(){
 }
 
 function onUpdate(){
-    updateTenantFormRef.value.validate((valid, fields)=>{
+    updateTenantFormRef.value.validate((valid)=>{
         if(!valid) return
-        updateTenant(updateTenantFormData.value).then(resp => {
+        updateTenant(updateTenantFormData.value).then(() => {
             tableRef.value.fetchData()
             updateDrawerFlag.value = false
         })
@@ -68,7 +69,7 @@ function onUpdate(){
 function onEnable(){
     const tenantIds = getSelectedIds()
     const request = {tenantIds}
-    enableTenants(request).then(resp=>{
+    enableTenants(request).then(()=>{
         tableRef.value.fetchData()
     })
 }
@@ -76,7 +77,7 @@ function onEnable(){
 function onDisable(){
     const tenantIds = getSelectedIds()
     const request = {tenantIds}
-    disableTenants(request).then(resp=>{
+    disableTenants(request).then(()=>{
         tableRef.value.fetchData()
     })
 }
@@ -84,7 +85,7 @@ function onDisable(){
 function onDelete(){
     const tenantIds = getSelectedIds()
     const request = {tenantIds}
-    deleteTenants(request).then(resp=>{
+    deleteTenants(request).then(()=>{
         tableRef.value.fetchData()
     })
 }
@@ -128,7 +129,7 @@ function openLimitDrawer(tenant){
         <ElTableColumn prop="name" label="名称" sortable="custom" />
         <ElTableColumn prop="parentName" label="父级租户" />
         <ElTableColumn prop="description" label="描述" />
-        <ElTableColumn prop="disabled" label="是否禁用" :formatter="(row, column, cellValue, index) => {return cellValue ? '是':'否'}" />
+        <ElTableColumn prop="disabled" label="是否禁用" :formatter="(_row, _column, cellValue, _index) => {return cellValue ? '是':'否'}" />
         <ElTableColumn prop="createdAt" label="创建时间" sortable="custom" />
 	    <ElTableColumn min-width="100">
 		    <template #default="scope">
