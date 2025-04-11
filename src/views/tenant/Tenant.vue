@@ -145,11 +145,11 @@ function openLimitDrawer(tenant){
     </StratoTable>
 
     <StratoDrawer v-model="drawerFlag" title="创建租户" @onConfirm="onSave">
-        <CreateTenantForm ref="createTenantFormRef" v-model="createTenantFormData" />
+        <CreateTenantForm ref="createTenantFormRef" v-if="drawerFlag" v-model="createTenantFormData" />
     </StratoDrawer>
 
     <StratoDrawer v-model="updateDrawerFlag" title="编辑租户" @onConfirm="onUpdate">
-        <UpdateTenantForm ref="updateTenantFormRef" v-model="updateTenantFormData" />
+        <UpdateTenantForm ref="updateTenantFormRef" v-if="updateDrawerFlag" v-model="updateTenantFormData" />
     </StratoDrawer>
 
 	<StratoDrawer v-model="ruleDrawerFlag" :title="`规则管理(租户:${ruleDrawerTenantName})`" no-confirm size="800">

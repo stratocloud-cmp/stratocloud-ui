@@ -34,11 +34,11 @@
     </StratoTable>
 
     <StratoDrawer v-model="drawerFlag" title="创建角色" @onConfirm="onSave">
-        <CreateRoleForm ref="createRoleFormRef" v-model="createRoleFormData" />
+        <CreateRoleForm ref="createRoleFormRef" v-if="drawerFlag" v-model="createRoleFormData" />
     </StratoDrawer>
 </template>
 <script setup>
-import {describeRoles, createRole, updateRole, deleteRoles} from '@/api/role'
+import {describeRoles, createRole, deleteRoles} from '@/api/role'
 import StratoButton from '@/components/StratoButton.vue';
 import {ElInput, ElPopconfirm, ElTableColumn} from 'element-plus';
 import { ref } from 'vue';

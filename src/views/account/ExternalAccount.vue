@@ -46,10 +46,16 @@ const createFormData = ref({
 	properties: {},
 })
 function onOpenCreateDrawer(){
+	createFormData.value = {
+		providerId: undefined,
+		name: undefined,
+		description: undefined,
+		properties: {},
+	}
 	createDrawerFlag.value = true
 }
 function createAccount(){
-	createFormRef.value.validate((valid, fields)=>{
+	createFormRef.value.validate((valid, _fields)=>{
 		if(!valid) return
 		createDrawerLoading.value = true
 		createExternalAccount(createFormData.value).then(()=>{
@@ -83,7 +89,7 @@ function updateAccount(){
 
 		updateDrawerLoading.value = true
 
-		updateExternalAccount(updateFormData.value).then(resp=>{
+		updateExternalAccount(updateFormData.value).then(()=>{
 			updateDrawerFlag.value = false
 			accountTableRef.value.fetchData()
 		}).finally(()=>{
@@ -120,7 +126,7 @@ function onEnable(){
 
 	enableExternalAccounts({
 		accountIds: getSelectedIds()
-	}).then(resp=>{
+	}).then(()=>{
 		accountTableRef.value.fetchData()
 	})
 }
@@ -132,7 +138,7 @@ function onDisable(){
 
 	disableExternalAccounts({
 		accountIds: getSelectedIds()
-	}).then(resp=>{
+	}).then(()=>{
 		accountTableRef.value.fetchData()
 	})
 }
@@ -144,7 +150,7 @@ function onDelete(){
 
 	deleteExternalAccounts({
 		externalAccountIds: getSelectedIds()
-	}).then(resp=>{
+	}).then(()=>{
 		accountTableRef.value.fetchData()
 	})
 }
@@ -216,7 +222,7 @@ function onDelete(){
 		v-model="createDrawerFlag"
 		title="创建云账号"
 		@on-confirm="createAccount">
-		<CreateAccountForm ref="createFormRef" v-model="createFormData" />
+		<CreateAccountForm ref="createFormRef" v-if="createDrawerFlag" v-model="createFormData" />
 	</StratoDrawer>
 
 	<StratoDrawer

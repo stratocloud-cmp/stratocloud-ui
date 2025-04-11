@@ -40,6 +40,7 @@ function handleValueSelected(tag){
 		:remote-method="describeTagValues"
 		sorted-by="index"
 		direction="ASC"
+		id-filter-key="tagValues"
 		@change="handleValueSelected"
 	>
 		<template #default="scope">

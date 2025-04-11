@@ -43,6 +43,7 @@ const addValueFormRules = ref({
 	index: [{required: true, message: '请输入序号'}],
 })
 function openAddValueDrawer(){
+	addValueFormData.value = {}
 	addValueFormData.value.tagEntryId = drawerEntry.value.id
 	addValueDrawerFlag.value = true
 }
@@ -116,6 +117,7 @@ function removeValue(){
 		<StratoDrawer v-model="addValueDrawerFlag" title="新建标签值" @on-confirm="confirmAddValue">
 			<ElForm
 				ref="addValueFormRef"
+				v-if="addValueDrawerFlag"
 				:model="addValueFormData"
 				:rules="addValueFormRules"
 				label-position="top"

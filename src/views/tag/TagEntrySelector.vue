@@ -27,6 +27,7 @@ function handleEntrySelected(tagEntry){
 		:label-getter="item=>item.tagKeyName"
 		:placeholder="`请选择标签键`"
 		:remote-method="describeTagEntries"
+		id-filter-key="entryKeys"
 		@change="handleEntrySelected"
 	>
 		<template #default="scope">
