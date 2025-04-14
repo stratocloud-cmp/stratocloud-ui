@@ -46,6 +46,7 @@ watch(networkResourceContext.networkResourceId, () => {
 		sorted-by="toBigInteger"
 		direction="ASC"
 		id-filter-key="ips"
+		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.address}}</span>

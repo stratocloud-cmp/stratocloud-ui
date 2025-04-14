@@ -38,7 +38,7 @@ function confirm(){
 		if(!valid) return
 		formData.value.orderId = props.selectedOrders[0].id
 		drawerLoading.value = true
-		cancelOrder(formData.value).then(resp=>{
+		cancelOrder(formData.value).then(()=>{
 			drawerFlag.value = false
 			emits('refresh')
 		}).finally(()=>{
@@ -57,7 +57,7 @@ function showButton(){
 	]
 	return props.selectedOrders.length>0 &&
 		allowedStatuses.includes(props.selectedOrders[0].status) &&
-		(sessionStore.isSuperAdmin || props.selectedOrders.every(o => o.id === sessionStore.userId))
+		(sessionStore.isSuperAdmin || props.selectedOrders.every(o => o.ownerId === sessionStore.userId))
 }
 
 </script>

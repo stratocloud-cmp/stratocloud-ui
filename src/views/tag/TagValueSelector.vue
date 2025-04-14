@@ -42,6 +42,7 @@ function handleValueSelected(tag){
 		direction="ASC"
 		id-filter-key="tagValues"
 		@change="handleValueSelected"
+		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.tagValueName}}</span>

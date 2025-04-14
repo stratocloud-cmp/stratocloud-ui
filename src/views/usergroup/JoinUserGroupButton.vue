@@ -12,6 +12,7 @@ const drawerFlag = ref(false)
 const drawerLoading = ref(false)
 
 function openDrawer(){
+	formData.value = {}
 	drawerFlag.value = true
 }
 
@@ -46,7 +47,7 @@ function confirmJoin(){
 		link
 	>找不到期望的用户组?&nbsp;点击此处申请加入</ElButton>
 	<StratoDrawer v-model="drawerFlag" title="申请加入用户组" @onConfirm="confirmJoin" :loading="drawerLoading">
-		<JoinUserGroupForm ref="formRef" v-model="formData" />
+		<JoinUserGroupForm ref="formRef" v-if="drawerFlag" v-model="formData" />
 	</StratoDrawer>
 </template>
 

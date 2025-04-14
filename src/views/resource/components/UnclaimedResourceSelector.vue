@@ -32,6 +32,7 @@ const pagingRequest = ref({
 		:remote-method="describeUnclaimedResources"
 		:placeholder="placeholder"
 		id-filter-key="resourceIds"
+		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.name}}</span>

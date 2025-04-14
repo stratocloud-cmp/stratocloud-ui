@@ -1,8 +1,6 @@
 <script setup>
 import StratoPagingSelector from "@/components/StratoPagingSelector.vue";
-import {ref, watch} from "vue";
-import {describeUsers} from "@/api/user.js";
-import {describeBlueprints} from '@/api/blueprint.js'
+import {ref} from "vue";
 import {describeStacks} from '@/api/resourceStack.js'
 
 const stackId = defineModel()
@@ -37,6 +35,7 @@ const pagingRequest = ref({})
 		:multiple="multiple"
 		:disabled="disabled"
 		id-filter-key="resourceStackIds"
+		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.name}}</span>

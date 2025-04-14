@@ -40,6 +40,7 @@ function onSelectChange(userGroup){
 		@change="onSelectChange"
 		:multiple="multiple"
 		id-filter-key="userGroupIds"
+		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.name}}</span>
