@@ -29,7 +29,6 @@ function handleEntrySelected(tagEntry){
 		:remote-method="describeTagEntries"
 		id-filter-key="entryKeys"
 		@change="handleEntrySelected"
-		teleported
 	>
 		<template #default="scope">
 			<span style="float: left">{{scope.row.tagKeyName}}</span>

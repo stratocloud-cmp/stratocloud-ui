@@ -38,7 +38,6 @@ function validate(callback) {
 
 const formData = defineModel({
 	required: true,
-	default: {}
 })
 
 function getFormItemComponent(type){

@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, watch} from 'vue'
+import {onMounted, ref} from 'vue'
 import router from '@/router/index.js'
 import {useSessionStore} from '@/stores/session.js'
 import StratoTable from '@/components/StratoTable.vue'
@@ -109,7 +109,7 @@ function openDetailDrawer(orderId){
 						{{scope.row.summary}}
 					</div>
 					<template #content>
-						<span style="white-space: pre-wrap" v-html="scope.row.summary"></span>
+						<div style="white-space: pre-wrap;max-height: 400px;overflow: auto" v-html="scope.row.summary"></div>
 					</template>
 				</ElTooltip>
 			</template>

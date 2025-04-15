@@ -1,5 +1,5 @@
 <script setup>
-import { ElIcon, ElTag } from 'element-plus';
+import { ElIcon } from 'element-plus';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -26,6 +26,7 @@ const states = {
 	CREATING:{
         name: '创建中',
         icon: 'Loading',
+		type: 'primary'
     },
 	CREATE_ERROR:{
         name: '创建失败',

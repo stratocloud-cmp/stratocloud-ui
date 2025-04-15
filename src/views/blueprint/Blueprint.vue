@@ -1,6 +1,6 @@
 <script setup>
 import StratoTable from '@/components/StratoTable.vue';
-import { ElInput, ElPopconfirm, ElTableColumn } from 'element-plus';
+import {ElInput, ElNotification, ElPopconfirm, ElTableColumn} from 'element-plus';
 import { ref } from 'vue';
 import StratoButton from '@/components/StratoButton.vue';
 import StratoDrawer from '@/components/StratoDrawer.vue';
@@ -39,16 +39,18 @@ function onOpenUpdateDrawer(selectedBlueprint){
 
 const createEditorRef = ref()
 function onSave(){
-	createEditorRef.value.confirmCreate().then(resp=>{
+	createEditorRef.value.confirmCreate().then(()=>{
 		drawerFlag.value = false
+		ElNotification.success('蓝图已保存')
 		tableRef.value.fetchData()
 	})
 }
 
 const updateEditorRef = ref()
 function onUpdate(){
-	updateEditorRef.value.confirmUpdate().then(resp=>{
+	updateEditorRef.value.confirmUpdate().then(()=>{
 		updateDrawerFlag.value = false
+		ElNotification.success('蓝图已保存')
 		tableRef.value.fetchData()
 	})
 }
@@ -57,7 +59,7 @@ function onUpdate(){
 function onDelete(){
 	const blueprintIds = getSelectedIds()
 	const request = {blueprintIds}
-	deleteBlueprints(request).then(resp=>{
+	deleteBlueprints(request).then(()=>{
 		tableRef.value.fetchData()
 	})
 }

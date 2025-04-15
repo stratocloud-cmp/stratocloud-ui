@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, shallowRef, watch} from 'vue'
+import {ref, shallowRef, watch} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
 import {getSelectorComponentByEntityType, useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 
@@ -40,7 +40,6 @@ watch(props, ()=>{
 		}else {
 			model.value = props.fieldInfo.detail.defaultValues[0]
 		}
-
 	}
 
 	if(props.fieldInfo.detail?.required){
