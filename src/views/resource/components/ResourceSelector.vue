@@ -50,7 +50,7 @@ const props = defineProps({
 	},
 	teleported: {
 		required: false,
-		default: false,
+		default: true,
 		type: Boolean
 	},
 	isolatedResourceContext: {

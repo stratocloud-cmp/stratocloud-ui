@@ -228,6 +228,7 @@ defineExpose({confirmCreate, confirmUpdate})
 		<ElCard
 			v-if="clickedNode"
 			style="position: absolute;top: 80px;right: 30px;width: 260px;background-color: #07070e;z-index: 9999"
+			:key="clickedNode.label"
 		>
 			<WorkflowNodeForm
 				v-model="clickedNodeData"
@@ -244,6 +245,7 @@ defineExpose({confirmCreate, confirmUpdate})
 
 </template>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 #workflow-main-container {
 	display: flex;
@@ -272,7 +274,7 @@ defineExpose({confirmCreate, confirmUpdate})
 }
 .x6-widget-transform {
 	margin: -1px 0 0 -1px;
-	padding: 0px;
+	padding: 0;
 	border: 1px solid #239edd;
 }
 .x6-widget-transform > div {

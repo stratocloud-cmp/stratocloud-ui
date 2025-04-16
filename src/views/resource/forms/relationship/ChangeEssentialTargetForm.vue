@@ -1,6 +1,6 @@
 <script setup>
 import {onMounted, ref} from "vue";
-import {ElForm, ElMessage} from "element-plus";
+import {ElForm} from "element-plus";
 import ResourceSelector from "@/views/resource/components/ResourceSelector.vue";
 import {Bottom} from "@element-plus/icons-vue";
 import {useResourceContextProvider} from '@/views/resource/composables/ResourceContext.js'

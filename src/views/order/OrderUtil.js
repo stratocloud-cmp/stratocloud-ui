@@ -137,3 +137,7 @@ function wrapFormDataPath(form, formDataPath){
         }
     })
 }
+
+export function isJobTypeNotSupportedForCreatingOrder(jobType){
+    return jobType === 'BATCH_CHANGE_ESSENTIAL_REQUIREMENTS'
+}

@@ -61,7 +61,7 @@ function removeModelItem(item){
 	if(index >= 0){
 		model.value.splice(index, 1)
 	}
-
+	console.log(model.value)
 }
 
 function validate(rule, value, callback){
@@ -99,7 +99,7 @@ defineExpose({validate})
 		</template>
 		<template #default>
 			<div>
-				<template v-for="item in model">
+				<template v-for="item in model" :key="item.tagKey">
 					<ElRow :gutter="12" style="margin-bottom: 6px">
 						<ElCol :span="10">
 							<TagEntrySelector

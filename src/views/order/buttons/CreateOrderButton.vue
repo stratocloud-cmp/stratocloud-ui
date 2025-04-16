@@ -3,7 +3,11 @@
 import {ref} from 'vue'
 import StratoDrawer from '@/components/StratoDrawer.vue'
 import WorkflowSelector from '@/views/workflow/WorkflowSelector.vue'
-import {getJobFormComponentByJobType, getJobFormDefaultData} from '@/views/order/OrderUtil.js'
+import {
+	getJobFormComponentByJobType,
+	getJobFormDefaultData,
+	isJobTypeNotSupportedForCreatingOrder
+} from '@/views/order/OrderUtil.js'
 import {createOrder} from '@/api/order.js'
 import {ElNotification} from 'element-plus'
 import {validateForms} from '@/utils/FormUtil.js'
@@ -38,7 +42,7 @@ function onWorkflowSelected(workflow){
 	for (let node of workflow.nodes.filter(n => n.nodeType === 'JOB_NODE')) {
 		const jobFormComponent = getJobFormComponent(node.nodeKey)
 
-		if(!jobFormComponent){
+		if(!jobFormComponent || isJobTypeNotSupportedForCreatingOrder(getJobNode(node.nodeKey).nodeProperties.jobType)){
 			ElNotification.warning('此流程不支持新建工单')
 			clear()
 			return
