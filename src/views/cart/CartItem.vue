@@ -76,7 +76,8 @@ function onSelect(selectedRows){
 			:disabled="selectedCartItems.length<=0"
 			:loading="submitLoading"
 			size="small"
-			type="primary"
+			type="success"
+			plain
 			@click="onSubmit">
 			提交
 		</StratoButton>
