@@ -1,7 +1,6 @@
 <script setup>
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import ResourceSelector from "@/views/resource/components/ResourceSelector.vue";
-import {Right} from '@element-plus/icons-vue'
 import RelationshipPropertiesForm from '@/views/resource/forms/relationship/RelationshipPropertiesForm.vue'
 import {validateForms} from '@/utils/FormUtil.js'
 
