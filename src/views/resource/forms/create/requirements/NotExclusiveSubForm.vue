@@ -32,7 +32,7 @@ function removeRequirement(requirement) {
 
 
 function disabledFlagGetter(item){
-	return !props.requirementDef.relationshipSpec.allowedTargetStates.includes(item.state) || item.recycled
+	return !props.requirementDef.relationshipSpec.allowedTargetStates.includes(item.state) || item.recycled || item.syncState === 'NOT_FOUND'
 }
 
 const categoryName = computed(()=>props.requirementDef.targetSpec.resourceCategoryName)

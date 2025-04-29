@@ -36,7 +36,7 @@ const props = defineProps({
 	disabledFlagGetter: {
 		required: false,
 		type: Function,
-		default: item=>item.recycled
+		default: item => item.recycled || item.syncState === 'NOT_FOUND'
 	},
 	multiple: {
 		required: false,

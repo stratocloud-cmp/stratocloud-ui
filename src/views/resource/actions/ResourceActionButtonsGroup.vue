@@ -202,7 +202,7 @@ function triggerReadAction(actionId){
 			>
 				<StratoButton :size="small?'small':'default'" :disabled="selectedResources.length===0">
 				<span :style="small?{fontSize: '12px'}:{}">
-					更多操作<ElIcon class="el-icon--right"><ArrowDown /></ElIcon>
+					更多操作<ElIcon size="12" class="el-icon--right"><ArrowDown /></ElIcon>
 				</span>
 				</StratoButton>
 				<template #dropdown>

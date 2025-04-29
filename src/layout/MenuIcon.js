@@ -8,6 +8,8 @@ export function getMenuItemIcon(menuName) {
             return resolveSvgIcon('Disk')
         case '磁盘类型':
             return resolveSvgIcon('Disk')
+        case '云硬盘快照':
+            return resolveSvgIcon('Disk')
         case '弹性网卡':
             return resolveSvgIcon('LocalIp')
         case '可用区':

@@ -38,13 +38,13 @@ const attrs = useAttrs()
 .strato-button-primary{
     background: linear-gradient(45deg, #00a3ff 0%, #513cc6 100%);
     border: 0;
-	font-weight: 500;
+	font-weight: 400;
 }
 .strato-button-primary:hover{
     background: linear-gradient(45deg, #68c8ff 0%, #6656c2 100%);
 }
 .strato-button-text{
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2rem;
     color: white;
     font-size: 16px;
@@ -52,7 +52,7 @@ const attrs = useAttrs()
 	height: 100%;
 }
 .strato-button-disabled-text{
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.2rem;
 	color: grey;
 	font-size: 16px;
@@ -60,11 +60,11 @@ const attrs = useAttrs()
 	height: 100%;
 }
 .strato-button{
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .strato-button-text-small{
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.2rem;
 	color: white;
 	font-size: 12px;
@@ -72,7 +72,7 @@ const attrs = useAttrs()
 	height: 100%;
 }
 .strato-button-disabled-text-small{
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.2rem;
 	color: grey;
 	font-size: 12px;

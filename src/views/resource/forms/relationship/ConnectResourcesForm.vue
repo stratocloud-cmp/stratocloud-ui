@@ -59,7 +59,7 @@ defineExpose({validate, getDefaultFormData})
 				ref="sourceResourceRef"
 				v-model="formData.sourceResourceId"
 				:resource-type-id="relationshipSpec.sourceResourceTypeId"
-				:disabled-flag-getter="item=>!relationshipSpec.allowedSourceStates?.includes(item.state) || item.recycled"
+				:disabled-flag-getter="item=>!relationshipSpec.allowedSourceStates?.includes(item.state) || item.recycled || item.syncState === 'NOT_FOUND'"
 			/>
 		</ElFormItem>
 		<ElFormItem><ElText type="success">挂载到<ElIcon><Bottom /></ElIcon></ElText></ElFormItem>
@@ -68,7 +68,7 @@ defineExpose({validate, getDefaultFormData})
 				ref="targetResourceRef"
 				v-model="formData.targetResourceId"
 				:resource-type-id="relationshipSpec.targetResourceTypeId"
-				:disabled-flag-getter="item=>!relationshipSpec.allowedTargetStates?.includes(item.state) || item.recycled"
+				:disabled-flag-getter="item=>!relationshipSpec.allowedTargetStates?.includes(item.state) || item.recycled || item.syncState === 'NOT_FOUND'"
 			/>
 		</ElFormItem>
 		<RelationshipPropertiesForm

@@ -58,7 +58,7 @@ defineExpose({validate, getDefaultFormData})
 				ref="sourceResourceRef"
 				v-model="formData.sourceId"
 				:resource-type-id="relationshipSpec.sourceResourceTypeId"
-				:disabled-flag-getter="item=>!relationshipSpec.allowedSourceStates?.includes(item.state) || item.recycled"
+				:disabled-flag-getter="item=>!relationshipSpec.allowedSourceStates?.includes(item.state) || item.recycled || item.syncState === 'NOT_FOUND'"
 			/>
 		</ElFormItem>
 		<ElFormItem>
@@ -74,7 +74,7 @@ defineExpose({validate, getDefaultFormData})
 				v-model="formData.newTargetId"
 				:resource-type-id="relationshipSpec.targetResourceTypeId"
 				:isolated-resource-context="relationshipSpec.isolatedTargetContext"
-				:disabled-flag-getter="item=>!relationshipSpec.allowedTargetStates?.includes(item.state) || item.recycled"
+				:disabled-flag-getter="item=>!relationshipSpec.allowedTargetStates?.includes(item.state) || item.recycled || item.syncState === 'NOT_FOUND'"
 			/>
 		</ElFormItem>
 		<RelationshipPropertiesForm

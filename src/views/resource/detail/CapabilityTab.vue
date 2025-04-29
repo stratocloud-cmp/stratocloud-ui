@@ -12,6 +12,7 @@ import ResourceTags from '@/views/resource/components/ResourceTags.vue'
 import {runAsyncJob} from '@/api/asyncJob.js'
 import {useActiveJobStore} from '@/stores/activeJob.js'
 import ResourceLink from '@/views/resource/components/ResourceLink.vue'
+import ResourceActionButtonsGroup from '@/views/resource/actions/ResourceActionButtonsGroup.vue'
 
 const props = defineProps({
     resource:{
@@ -44,6 +45,10 @@ const canCreate = computed(()=>{
 
 const activeJobStore = useActiveJobStore()
 
+function fetchDataAgain() {
+	capabilityTableRef.value.fetchData()
+}
+
 function onDisconnect(){
 	if(selectedCapabilities.value.length===0){
 		return
@@ -56,9 +61,11 @@ function onDisconnect(){
 		}
 	}).then(resp=>{
 		activeJobStore.setActiveJobId(resp.jobId)
-		capabilityTableRef.value.fetchData()
+		fetchDataAgain()
 	})
 }
+
+const selectedResources = computed(() => selectedCapabilities.value.map(c => c.source))
 
 </script>
 
@@ -80,13 +87,21 @@ function onDisconnect(){
 					</StratoButton>
 				</template>
 			</ElPopconfirm>
+
+			<ResourceActionButtonsGroup
+				:category="capability.sourceSpec.resourceCategoryId"
+				:selected-resources="selectedResources"
+				build-action-hidden
+				small
+				@action-submitted="fetchDataAgain"
+			/>
 		</ElSpace>
 		<ElInput size="small" style="float: right;width: 20%;" v-model="pagingRequest.search" suffix-icon="search" />
 	</div>
-    <StratoTable        
+    <StratoTable
         ref="capabilityTableRef"
-        :paging-request="pagingRequest" 
-        :remote-method="describeCapabilities" 
+        :paging-request="pagingRequest"
+        :remote-method="describeCapabilities"
         @selection-change="handleSelectionChange"
         @filter-change="handlerFilterChange"
         :default-page-size="5"

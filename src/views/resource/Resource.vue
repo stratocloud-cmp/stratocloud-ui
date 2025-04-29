@@ -227,7 +227,7 @@ const isMonitoredCategory = computed(checkIsMonitoredCategory)
 		        :category="currentCategory" />
 
             <StratoButton style="margin-left: 10px;" @click="openRecycleBinDrawer" plain>
-                <ElIcon><Delete /></ElIcon>
+                <ElIcon size="12"><Delete /></ElIcon>
                 回收站
             </StratoButton>
 
