@@ -239,6 +239,7 @@ onMounted(async ()=>{
 	    </div>
     </div>
 </template>
+<!--suppress CssUnusedSymbol -->
 <style scoped>
 .strato-header{
     height: 100%;
