@@ -92,7 +92,7 @@ const menus = computed(() => {
 
 
 function setActiveMenu(menuItem){
-    activeMenuStore.setActiveMenu(menuItem) 
+    activeMenuStore.setActiveMenu(menuItem)
 }
 
 
@@ -107,10 +107,6 @@ onMounted(()=>{
 <!--suppress CssUnusedSymbol -->
 <style scoped>
 .strato-menu{
-    /* background-image: linear-gradient(45deg, #23008b 0%, #610099 100%); */
-	/* background-image: linear-gradient(45deg, #150055 0%, #610099 100%);
-    background-color: #07070e; */
-    /* background-color: #150052; */
     height: 100%;
 	border: 0;
 }

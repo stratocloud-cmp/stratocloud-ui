@@ -1,6 +1,6 @@
 {
   "name": "stratocloud-ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,7 +21,7 @@
     "@antv/x6-plugin-transform": "^2.1.8",
     "@antv/x6-vue-shape": "^2.1.2",
     "@element-plus/icons-vue": "^2.3.1",
-    "axios": "^1.7.2",
+    "axios": "1.8.2",
     "crypto": "^1.0.1",
     "element-plus": "^2.7.7",
     "js-md5": "^0.8.3",
@@ -36,6 +36,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
-    "vite": "5.4.6"
+    "vite": "6.2.6"
   }
 }

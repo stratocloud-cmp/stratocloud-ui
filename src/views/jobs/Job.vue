@@ -26,7 +26,7 @@ const props = defineProps({
 
 const jobTableRef = ref()
 
-defineExpose({refresh})
+defineExpose({refresh, getRunningJobCount})
 
 function refresh(){
 	return jobTableRef.value.fetchData()
@@ -37,6 +37,12 @@ const pagingRequest = ref({
 })
 
 const asyncJobMap = ref(new Map())
+
+const runningJob = ref(0)
+
+function getRunningJobCount(){
+	return runningJob.value
+}
 
 function handleListChange(listData){
 	if(listData && listData.length > 0){
@@ -51,6 +57,7 @@ function handleListChange(listData){
 				}
 			}
 		})
+		runningJob.value = listData.filter(j => j.status === 'STARTED').length
 	}
 }
 

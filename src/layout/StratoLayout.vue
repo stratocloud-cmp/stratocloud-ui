@@ -1,6 +1,6 @@
 
 <template>
-    <ElContainer style="height: 100%; overflow: hidden; background-image: linear-gradient(-45deg, #150055 0%, #610099 100%);">
+    <ElContainer class="strato-main-container-dark">
         <ElHeader style="padding: 0;">
             <StratoHeader />
         </ElHeader>
@@ -8,14 +8,14 @@
             <ElAside style="width: 240px; height: 100%; scrollbar-width: thin;">
                 <StratoMenu />
             </ElAside>
-            <ElContainer style="height: 100%; margin-right: 16px; background-color: rgb(16, 16, 16);">
-                <ElHeader style="display: flex; align-items: center;">
-                    <StratoContentHeader />
-                </ElHeader>
-                <ElMain>
-                    <RouterView :key="router.currentRoute.value.fullPath" />
-                </ElMain>
-            </ElContainer>
+	        <ElContainer class="strato-content-dark">
+		        <ElHeader style="display: flex; align-items: center;">
+			        <StratoContentHeader />
+		        </ElHeader>
+		        <ElMain>
+			        <RouterView :key="router.currentRoute.value.fullPath" />
+		        </ElMain>
+	        </ElContainer>
         </ElContainer>
     </ElContainer>
 </template>
@@ -38,5 +38,18 @@ if (!useSessionStore().session){
 <style>
 body{
 	overflow: hidden;
+}
+
+.strato-content-dark {
+	height: 100%;
+	margin-right: 16px;
+	border-radius: 6px;
+	background-color: rgb(28, 28, 28);
+}
+
+.strato-main-container-dark {
+	height: 100%;
+	overflow: hidden;
+	background-image: linear-gradient(-45deg, #150055 0%, #610099 100%);
 }
 </style>

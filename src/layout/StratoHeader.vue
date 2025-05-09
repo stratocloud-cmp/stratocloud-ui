@@ -241,8 +241,6 @@ onMounted(async ()=>{
 </template>
 <style scoped>
 .strato-header{
-    /*background-image: linear-gradient(-45deg, #150055 0%, #610099 100%);
-    background-color: #07070e;*/
     height: 100%;
     width: 100%;
 	min-width: 100%;
@@ -253,21 +251,15 @@ onMounted(async ()=>{
 }
 .strato-menu-item{
     font-size: 18px;
-    color: white;
 }
 .strato-menu-item:hover{
     background-color: rgba(7, 0, 112, 0.25);
-    color: white;
 }
 .is-active{
     background-color: rgba(7, 0, 112, 0.25);
-    color: white;
 }
-.el-menu-item{
-    color: white;
-}
+
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover{
-    color: white;
     background-color: rgba(7, 0, 112, 0.25);
 }
 </style>

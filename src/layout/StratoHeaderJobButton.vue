@@ -1,7 +1,7 @@
 <script setup>
 
 import Job from "@/views/jobs/Job.vue";
-import {ref, watch} from "vue";
+import {computed, ref, watch} from "vue";
 import {useActiveJobStore} from "@/stores/activeJob.js";
 import {Check} from "@element-plus/icons-vue";
 
@@ -26,12 +26,16 @@ watch(()=>activeJobStore.activeJobId, ()=>{
 	})
 })
 
+const runningJobCount = computed(() => jobRef.value ? jobRef.value.getRunningJobCount() : 0)
+
 </script>
 
 <template>
 	<ElPopover v-model:visible="popOverVisible" placement="bottom-end" :width="800" trigger="click">
 		<template #reference>
-			<ElButton size="large" class="job-button" icon="List" />
+			<ElBadge :is-dot="runningJobCount > 0" type="warning" :offset="[-10, 10]">
+				<ElButton size="large" class="job-button" icon="List" />
+			</ElBadge>
 		</template>
 		<ElText
 			v-if="showNewJobSubmittedMessage"
