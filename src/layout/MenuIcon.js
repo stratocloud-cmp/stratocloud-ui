@@ -106,6 +106,12 @@ export function getMenuItemIcon(menuName) {
             return 'Tickets'
         case '审计日志':
             return 'VideoCamera'
+        case '通知方式':
+            return 'MessageBox'
+        case '通知策略':
+            return 'MessageBox'
+        case '通知记录':
+            return 'Message'
     }
 
     return 'MostlyCloudy'

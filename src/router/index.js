@@ -149,6 +149,21 @@ const stratoRouter = createRouter({
           name: 'AuditLog',
           component: () => import('@/views/audit/AuditLog.vue'),
         },
+        {
+          path: '/system-configuration/notification-way',
+          name: 'NotificationWay',
+          component: () => import('@/views/notification/NotificationWay.vue'),
+        },
+        {
+          path: '/system-configuration/notification-policy',
+          name: 'NotificationPolicy',
+          component: () => import('@/views/notification/NotificationPolicy.vue'),
+        },
+        {
+          path: '/system-configuration/notification',
+          name: 'Notification',
+          component: () => import('@/views/notification/Notification.vue'),
+        },
       ]
     }
   ]

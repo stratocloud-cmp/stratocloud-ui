@@ -22,6 +22,21 @@ export const definedSystemConfigurationMenus = [
         menuName: '审计日志',
         path: '/system-configuration/audit-log',
         permissionTarget: 'AuditLog',
+    },
+    {
+        menuName: '通知方式',
+        path: '/system-configuration/notification-way',
+        permissionTarget: 'NotificationWay',
+    },
+    {
+        menuName: '通知策略',
+        path: '/system-configuration/notification-policy',
+        permissionTarget: 'NotificationPolicy',
+    },
+    {
+        menuName: '通知记录',
+        path: '/system-configuration/notification',
+        permissionTarget: 'Notification',
     }
 ]
 
