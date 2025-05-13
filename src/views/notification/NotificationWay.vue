@@ -3,7 +3,7 @@ import StratoTable from "@/components/StratoTable.vue";
 import {ref} from "vue";
 
 import StratoButton from "@/components/StratoButton.vue";
-import {ElInput, ElPopconfirm} from "element-plus";
+import {ElInput} from "element-plus";
 import StratoDrawer from '@/components/StratoDrawer.vue'
 import {
 	createNotificationWay,

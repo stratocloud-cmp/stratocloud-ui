@@ -1,6 +1,5 @@
 <script setup>
 import StratoSelector from '@/components/StratoSelector.vue'
-import {describeProviders} from '@/api/resource.js'
 import {ref} from 'vue'
 import {describeNotificationProviders} from '@/api/notification.js'
 

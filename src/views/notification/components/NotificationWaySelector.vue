@@ -1,8 +1,6 @@
 <script setup>
 import StratoPagingSelector from "@/components/StratoPagingSelector.vue";
-import {ref, watch} from "vue";
-import {describeAccounts} from "@/api/account.js";
-import {useAccountContext} from '@/views/resource/composables/AccountContext.js'
+import {ref} from "vue";
 import {describeNotificationWays} from '@/api/notification.js'
 
 const notificationWayId = defineModel()

@@ -1,5 +1,5 @@
 <script setup>
-import { ElIcon, ElTag } from 'element-plus';
+import { ElIcon } from 'element-plus';
 import { computed } from 'vue';
 
 const props = defineProps({

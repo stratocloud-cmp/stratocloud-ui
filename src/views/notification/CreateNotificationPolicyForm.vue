@@ -1,8 +1,5 @@
 <script setup>
 import {ref} from 'vue'
-import ProviderSelector from '@/views/resource/components/ProviderSelector.vue'
-import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
-import NotificationProviderSelector from '@/views/notification/components/NotificationProviderSelector.vue'
 import TenantTreeSelector from '@/views/tenant/TenantTreeSelector.vue'
 import NotificationEventTypeSelector from '@/views/notification/components/NotificationEventTypeSelector.vue'
 import UserSelector from '@/views/user/UserSelector.vue'

@@ -1,8 +1,7 @@
 <script setup>
 import StratoSelector from '@/components/StratoSelector.vue'
-import {describeProviders} from '@/api/resource.js'
 import {ref} from 'vue'
-import {describeNotificationEventTypes, describeNotificationProviders} from '@/api/notification.js'
+import {describeNotificationEventTypes} from '@/api/notification.js'
 
 const eventType = defineModel()
 

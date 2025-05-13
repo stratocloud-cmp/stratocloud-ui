@@ -1,6 +1,5 @@
 <script setup>
 import {ref} from 'vue'
-import ProviderSelector from '@/views/resource/components/ProviderSelector.vue'
 import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
 import NotificationProviderSelector from '@/views/notification/components/NotificationProviderSelector.vue'
 import TenantTreeSelector from '@/views/tenant/TenantTreeSelector.vue'
@@ -22,7 +21,7 @@ const dynamicFormRef = ref()
 defineExpose({validate})
 
 function validate(callback) {
-	dynamicFormRef.value.validate((valid, fields)=>{
+	dynamicFormRef.value.validate((valid, _fields)=>{
 		if(!valid) return
 		formRef.value.validate(callback)
 	})

@@ -3,18 +3,14 @@ import StratoTable from "@/components/StratoTable.vue";
 import {ref} from "vue";
 
 import StratoButton from "@/components/StratoButton.vue";
-import {ElInput, ElPopconfirm} from "element-plus";
+import {ElInput} from "element-plus";
 import StratoDrawer from '@/components/StratoDrawer.vue'
 import {
 	createNotificationPolicy,
-	createNotificationWay, deleteNotificationPolicies,
-	deleteNotificationWays, describeNotificationPolicies,
-	describeNotificationWays, updateNotificationPolicy,
-	updateNotificationWay
+	deleteNotificationPolicies,
+	describeNotificationPolicies,
+	updateNotificationPolicy
 } from '@/api/notification.js'
-import NotificationProviderStatus from '@/views/notification/components/NotificationProviderStatus.vue'
-import CreateNotificationWayForm from '@/views/notification/CreateNotificationWayForm.vue'
-import UpdateNotificationWayForm from '@/views/notification/UpdateNotificationWayForm.vue'
 import CreateNotificationPolicyForm from '@/views/notification/CreateNotificationPolicyForm.vue'
 import UpdateNotificationPolicyForm from '@/views/notification/UpdateNotificationPolicyForm.vue'
 

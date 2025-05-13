@@ -1,16 +1,11 @@
 <script setup>
 import {onMounted, ref} from 'vue'
-import ProviderSelector from '@/views/resource/components/ProviderSelector.vue'
-import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
-import NotificationProviderSelector from '@/views/notification/components/NotificationProviderSelector.vue'
-import TenantTreeSelector from '@/views/tenant/TenantTreeSelector.vue'
 import NotificationEventTypeSelector from '@/views/notification/components/NotificationEventTypeSelector.vue'
 import UserSelector from '@/views/user/UserSelector.vue'
 import RoleSelector from '@/views/role/RoleSelector.vue'
 import UserGroupSelector from '@/views/usergroup/UserGroupSelector.vue'
-import NotificationWaySelector from '@/views/notification/components/NotificationWaySelector.vue'
 import StratoCodeBlock from '@/components/StratoCodeBlock.vue'
-import {describeNotificationPolicies, describeNotificationWays} from '@/api/notification.js'
+import {describeNotificationPolicies} from '@/api/notification.js'
 
 const formData = defineModel({
 	required: true

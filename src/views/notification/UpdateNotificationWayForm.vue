@@ -1,9 +1,7 @@
 <script setup>
 import {onMounted, ref} from 'vue'
-import ProviderSelector from '@/views/resource/components/ProviderSelector.vue'
 import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
 import NotificationProviderSelector from '@/views/notification/components/NotificationProviderSelector.vue'
-import TenantTreeSelector from '@/views/tenant/TenantTreeSelector.vue'
 import {describeNotificationWays} from '@/api/notification.js'
 
 const formData = defineModel({
