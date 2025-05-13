@@ -20,7 +20,7 @@ const dynamicFormRef = ref()
 defineExpose({validate})
 
 function validate(callback) {
-	dynamicFormRef.value.validate((valid, fields)=>{
+	dynamicFormRef.value.validate((valid, _fields)=>{
 		if(!valid) return
 		formRef.value.validate(callback)
 	})
