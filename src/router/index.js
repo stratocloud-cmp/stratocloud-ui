@@ -116,6 +116,11 @@ const stratoRouter = createRouter({
           name: 'SoftwareDefinition',
           component: () => import('@/views/software/SoftwareDefinition.vue'),
         },
+        {
+          path: '/cloud-configuration/resource-events',
+          name: 'ResourceEvents',
+          component: () => import('@/views/event/ResourceEvent.vue'),
+        },
       ]
     },
     {

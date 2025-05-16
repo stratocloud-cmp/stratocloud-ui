@@ -79,9 +79,9 @@ export const describeNotifications = data => {
         data
     });
 };
-export const resendNotifications = data => {
+export const resendNotification = data => {
     return request({
-        url: '/identity-service/resend-notifications',
+        url: '/identity-service/resend-notification',
         method: 'post',
         data
     });
@@ -96,7 +96,7 @@ export const describeInternalMails = data => {
 };
 export const markInternalMailsRead = data => {
     return request({
-        url: '/identity-service/resend-notifications',
+        url: '/identity-service/mark-internal-mails-read',
         method: 'post',
         data
     });

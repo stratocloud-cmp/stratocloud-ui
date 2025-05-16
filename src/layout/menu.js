@@ -71,6 +71,11 @@ export const definedCloudConfigurationMenus = [
         path: '/cloud-configuration/software-definition',
         permissionTarget: 'SoftwareDefinition',
     },
+    {
+        menuName: '云资源事件',
+        path: '/cloud-configuration/resource-events',
+        permissionTarget: 'ResourceEvents',
+    },
 ]
 
 export const definedOrderMenus = [

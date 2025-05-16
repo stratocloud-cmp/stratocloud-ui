@@ -14,6 +14,7 @@ import StratoHeaderJobButton from "@/layout/StratoHeaderJobButton.vue";
 import {useRouter} from 'vue-router'
 import StratoHeaderUserConfigButton from '@/layout/StratoHeaderUserConfigButton.vue'
 import StratoHeaderCartButton from '@/layout/StratoHeaderCartButton.vue'
+import StratoHeaderInternalMailButton from '@/layout/StratoHeaderInternalMailButton.vue'
 
 const defaultActiveMenuIndex = ref('0')
 
@@ -234,6 +235,7 @@ onMounted(async ()=>{
 		    <ElButtonGroup>
 			    <StratoHeaderCartButton />
 			    <StratoHeaderJobButton v-if="hasPermission('Job')" />
+			    <StratoHeaderInternalMailButton />
 			    <StratoHeaderUserConfigButton  />
 		    </ElButtonGroup>
 	    </div>
