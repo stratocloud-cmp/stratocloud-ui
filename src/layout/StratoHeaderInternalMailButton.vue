@@ -1,6 +1,5 @@
 <script setup>
 import {computed, ref} from "vue";
-import CartItem from '@/views/cart/CartItem.vue'
 import InternalMail from '@/views/notification/InternalMail.vue'
 
 const popOverVisible = ref(false)

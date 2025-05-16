@@ -1,19 +1,7 @@
 <script setup>
 import StratoTable from "@/components/StratoTable.vue";
 import {ref} from "vue";
-
-import StratoButton from "@/components/StratoButton.vue";
-import {ElInput} from "element-plus";
-import StratoDrawer from '@/components/StratoDrawer.vue'
-import {
-	createNotificationWay,
-	deleteNotificationWays, describeInternalMails,
-	describeNotificationWays, markInternalMailsRead,
-	updateNotificationWay
-} from '@/api/notification.js'
-import NotificationProviderStatus from '@/views/notification/components/NotificationProviderStatus.vue'
-import CreateNotificationWayForm from '@/views/notification/CreateNotificationWayForm.vue'
-import UpdateNotificationWayForm from '@/views/notification/UpdateNotificationWayForm.vue'
+import {describeInternalMails, markInternalMailsRead} from '@/api/notification.js'
 
 const props = defineProps({
 	isRead: {
