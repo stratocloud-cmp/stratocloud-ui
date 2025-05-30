@@ -59,6 +59,7 @@ defineExpose({getTotal})
 				</div>
 			</template>
 		</ElTableColumn>
+		<ElTableColumn width="150" label="接收时间" prop="createdAt" sortable="custom" />
 	</StratoTable>
 </template>
 

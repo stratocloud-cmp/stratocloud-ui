@@ -112,6 +112,8 @@ export function getMenuItemIcon(menuName) {
             return 'MessageBox'
         case '通知记录':
             return 'Message'
+        case '云资源事件':
+            return 'Bell'
     }
 
     return 'MostlyCloudy'

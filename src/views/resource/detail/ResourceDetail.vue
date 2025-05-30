@@ -13,6 +13,7 @@ import {describeAccounts} from '@/api/account.js'
 import ResourceQuickStats from '@/views/resource/components/ResourceQuickStats.vue'
 import StratoTextEditor from '@/components/StratoTextEditor.vue'
 import {updateDescription} from '@/api/resource.js'
+import ResourceMetrics from '@/views/resource/components/ResourceMetrics.vue'
 
 const props = defineProps({
 	resource: {
@@ -96,7 +97,14 @@ function onRefresh(){
 				<div style="width: 100px">监控</div>
 			</template>
 			<div style="min-width: 180px">
-				<ResourceQuickStats :resource-id="resource.id" :span="6" :hide-after="4" />
+				<ElRow>
+					<ElCol :span="20">
+						<ResourceQuickStats :resource-id="resource.id" :span="8" :hide-after="4" />
+					</ElCol>
+					<ElCol :span="4">
+						<ResourceMetrics :resource-id="resource.id" />
+					</ElCol>
+				</ElRow>
 			</div>
 
 		</ElDescriptionsItem>

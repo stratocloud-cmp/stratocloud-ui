@@ -42,7 +42,7 @@ const fetchDataIntervalId = ref()
 onMounted(() => {
 	fetchQuickStats()
 
-	fetchDataIntervalId.value = setInterval(fetchQuickStats, 10000)
+	fetchDataIntervalId.value = setInterval(fetchQuickStats, 30000)
 })
 
 onUnmounted(()=>{

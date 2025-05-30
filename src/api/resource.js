@@ -160,6 +160,14 @@ export const describeResourceQuickStats = data => {
     });
 };
 
+export const describeResourceMetrics = data => {
+    return request({
+        url: '/resource-service/describe-resource-metrics',
+        method: 'post',
+        data
+    });
+};
+
 export const associateTags = data => {
     return request({
         url: '/resource-service/associate-tags',
