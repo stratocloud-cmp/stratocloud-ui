@@ -221,6 +221,7 @@ function onDelete(){
 		:loading="createDrawerLoading"
 		v-model="createDrawerFlag"
 		title="创建云账号"
+		size="800"
 		@on-confirm="createAccount">
 		<CreateAccountForm ref="createFormRef" v-if="createDrawerFlag" v-model="createFormData" />
 	</StratoDrawer>
@@ -229,6 +230,7 @@ function onDelete(){
 		:loading="updateDrawerLoading"
 		v-model="updateDrawerFlag"
 		title="编辑云账号"
+		size="800"
 		@on-confirm="updateAccount">
 		<UpdateAccountForm v-if="updateDrawerFlag" ref="updateFormRef" v-model="updateFormData" />
 	</StratoDrawer>

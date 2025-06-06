@@ -6,6 +6,7 @@ import {useDynamicFormContextProvider} from '@/views/dynamicform/DynamicFormUtil
 import DynamicFormNumber from '@/views/dynamicform/DynamicFormNumber.vue'
 import DynamicFormBoolean from '@/views/dynamicform/DynamicFormBoolean.vue'
 import DynamicFormIp from '@/views/dynamicform/DynamicFormIp.vue'
+import DynamicFormCodeBlock from '@/views/dynamicform/DynamicFormCodeBlock.vue'
 
 const props = defineProps({
 	formMetaData: {
@@ -47,6 +48,7 @@ function getFormItemComponent(type){
 		case 'NumberField': return DynamicFormNumber
 		case 'BooleanField': return DynamicFormBoolean
 		case 'IpField': return DynamicFormIp
+		case 'CodeBlockField': return DynamicFormCodeBlock
 	}
 
 	return undefined
