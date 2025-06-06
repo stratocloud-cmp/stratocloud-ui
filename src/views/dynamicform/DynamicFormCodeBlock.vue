@@ -1,7 +1,6 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
-import {getValidatorByRegex} from '@/utils/regex.js'
 import {useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 import StratoCodeBlock from '@/components/StratoCodeBlock.vue'
 
