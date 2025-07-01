@@ -29,13 +29,18 @@ const formMetaData = ref()
 
 const networkResourceContext = useNetworkResourceContextProvider()
 
+const loading = ref(false)
+
 watch(props,()=>{
+	loading.value = true
 	describeResourceActionForm({
 		resourceId: props.resourceId,
 		actionId: props.actionId
 	}).then(resp=>{
 		formMetaData.value = resp.formMetaData
 		networkResourceContext.networkResourceId.value = resp.networkResourceId
+	}).finally(()=>{
+		loading.value = false
 	})
 }, {immediate: true})
 </script>

@@ -24,6 +24,11 @@ const props = defineProps({
 	args: {
 		required: false,
 		default: {}
+	},
+	loading: {
+		required: false,
+		default: false,
+		type: Boolean
 	}
 })
 
@@ -73,7 +78,7 @@ for (let fieldInfo of props.formMetaData.fieldInfoList) {
 </script>
 
 <template>
-	<ElForm :size="size" ref="formRef" :model="formData" label-position="top" hide-required-asterisk>
+	<ElForm v-loading="loading" :size="size" ref="formRef" :model="formData" label-position="top" hide-required-asterisk>
 		<template v-for="fieldInfo in formMetaData.fieldInfoList">
 			<component
 				v-model="formData[fieldInfo.key]"
