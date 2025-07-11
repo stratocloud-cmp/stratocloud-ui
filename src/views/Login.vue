@@ -19,14 +19,14 @@
                     </ElFormItem>
                 </ElForm>
             </div>
-            
+
         </div>
     </div>
 
-    
+
 </template>
 <script setup>
-import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus';
+import {ElForm, ElFormItem, ElInput} from 'element-plus';
 import { ref } from 'vue';
 import { login } from '@/api/login'
 import { getMd5 } from '@/utils/md5'
@@ -78,15 +78,15 @@ function onLogin(){
 
 <style lang="scss" scoped>
 .login-page{
-    height: 100%; 
-    justify-content: center; 
-    display: flex; 
+    height: 100%;
+    justify-content: center;
+    display: flex;
     align-items: center;
     background: linear-gradient(to top, #23008b 0%, #610099 100%);
 }
 .login-form-area{
     width: 350px;
-    background-color: rgb(26, 26, 42); 
+    background-color: rgb(26, 26, 42);
     border-radius: 2px;
     box-shadow: 0 1px 4px 1px rgba(7,7,14,.2);
     font-weight: 600;
@@ -94,7 +94,7 @@ function onLogin(){
 
     .content{
         padding: 20px;
-        
+
     }
     .el-button{
         width: 100%;

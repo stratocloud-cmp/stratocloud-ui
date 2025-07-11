@@ -203,7 +203,8 @@ watch(selectedTags, () => {
 function checkIsMonitoredCategory(){
 	return [
 		'COMPUTE_INSTANCE',
-		'CONTAINER',
+		'POD',
+		'NODE',
 		'ELASTIC_IP',
 		'DISK',
 		'CLUSTER',
