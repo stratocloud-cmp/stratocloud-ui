@@ -68,7 +68,7 @@ function onLogin(){
 		    router.push('/')
 	    }
 
-    }).catch(err => {
+    }).catch(() => {
         loading.value = false
     })
 }
