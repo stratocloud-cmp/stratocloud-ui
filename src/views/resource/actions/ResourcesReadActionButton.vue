@@ -4,6 +4,7 @@ import {computed, ref} from 'vue'
 import StratoDrawer from '@/components/StratoDrawer.vue'
 import {runReadActions} from '@/api/resource.js'
 import {ElNotification} from 'element-plus'
+import StratoCodeBlock from '@/components/StratoCodeBlock.vue'
 
 
 const props = defineProps({
@@ -113,7 +114,10 @@ function handleJump(url){
 								复制
 							</ElLink>
 						</template>
-						<div style="max-width: 400px;overflow-wrap: break-word">
+						<div v-if="item.resultType === 'YAML'" style="max-width: 800px;">
+							<StratoCodeBlock style="min-height: 400px" v-model="item.value" language="yaml" read-only />
+						</div>
+						<div v-else style="max-width: 400px;overflow-wrap: break-word">
 							{{item.value}}
 						</div>
 					</ElDescriptionsItem>
