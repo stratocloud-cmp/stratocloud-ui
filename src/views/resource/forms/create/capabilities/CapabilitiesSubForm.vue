@@ -1,6 +1,6 @@
 <script setup>
 
-import {computed, onMounted, ref} from 'vue'
+import {computed, ref} from 'vue'
 import PrimaryCapabilitySubForm from '@/views/resource/forms/create/capabilities/PrimaryCapabilitySubForm.vue'
 import NotPrimaryCapabilitySubForm from '@/views/resource/forms/create/capabilities/NotPrimaryCapabilitySubForm.vue'
 import {validateForms} from '@/utils/FormUtil.js'
