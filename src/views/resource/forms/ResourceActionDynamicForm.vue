@@ -51,7 +51,9 @@ watch(props,()=>{
 		v-if="formMetaData"
 		:form-meta-data="formMetaData"
 		v-model="formData"
+		:loading="loading"
 	/>
+	<ElSkeleton v-else-if="loading" :rows="3" animated />
 </template>
 
 <style scoped>

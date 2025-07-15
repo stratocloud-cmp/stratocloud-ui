@@ -21,7 +21,8 @@ function isPrimaryCapability(capabilityDef){
 }
 
 function isVisible(capabilityDef){
-	return capabilityDef.relationshipSpec.visibleInTarget === true
+	return capabilityDef.relationshipSpec.visibleInTarget === true &&
+		capabilityDef.relationshipSpec.visibleInForm === true
 }
 
 function filterNewCapabilitiesByDef(capabilityDef){

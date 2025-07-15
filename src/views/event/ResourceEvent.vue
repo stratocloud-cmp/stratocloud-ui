@@ -27,6 +27,11 @@ const eventTableRef = ref()
 		:remote-method="describeResourceEvents">
 		<ElTableColumn prop="internalEventId" label="事件ID" sortable="custom" />
 		<ElTableColumn prop="externalEventId" label="外部事件ID" sortable="custom" />
+		<ElTableColumn prop="resourceId" label="资源" sortable="custom">
+			<template #default="scope">
+				{{scope.row.resourceTypeName+': '+scope.row.resourceName}}
+			</template>
+		</ElTableColumn>
 		<ElTableColumn prop="eventType" label="事件类型" sortable="custom">
 			<template #default="scope">
 				{{scope.row.eventTypeName}}
@@ -42,12 +47,19 @@ const eventTableRef = ref()
 				<EventSource :event-source="scope.row.source" />
 			</template>
 		</ElTableColumn>
-		<ElTableColumn prop="resourceId" label="资源" sortable="custom">
+
+		<ElTableColumn prop="summary" label="事件详情" :show-overflow-tooltip="false">
 			<template #default="scope">
-				{{scope.row.resourceTypeName+': '+scope.row.resourceName}}
+				<ElTooltip>
+					<div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+						{{scope.row.summary}}
+					</div>
+					<template #content>
+						<div style="white-space: pre-wrap;max-height: 400px;overflow: auto" v-html="scope.row.summary"></div>
+					</template>
+				</ElTooltip>
 			</template>
 		</ElTableColumn>
-		<ElTableColumn prop="summary" label="事件详情" />
 		<ElTableColumn prop="eventHappenedAt" label="事件发生时间" sortable="custom" />
 	</StratoTable>
 </template>

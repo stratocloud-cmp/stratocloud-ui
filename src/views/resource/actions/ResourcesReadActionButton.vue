@@ -90,7 +90,8 @@ function handleJump(url){
 		:title="action.name"
 		no-confirm
 	>
-		<div v-loading="loading" style="width:100%;">
+		<div style="width:100%;">
+			<ElSkeleton v-if="loading" :rows="3" animated />
 			<ElCard v-for="response in responseList">
 				<template #header>
 					{{response.resourceName}}

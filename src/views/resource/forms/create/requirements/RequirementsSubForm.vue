@@ -45,6 +45,10 @@ function isPrimaryCapability(requirementDef){
 	return requirementDef.relationshipSpec.primaryCapability === true
 }
 
+function isVisible(requirementDef){
+	return requirementDef.relationshipSpec.visibleInForm === true
+}
+
 
 
 function isSharedTargetEssential(requirementDef){
@@ -66,23 +70,26 @@ const resourceStackNodeContext = useResourceStaceNodeContext()
 
 const sharedTargetEssentialDefs = computed(
 	()=>props.requirementDefs
+		.filter(isVisible)
 		.filter(isSharedTargetEssential)
 		.filter(def => !resourceStackNodeContext.isIgnoredTargetType(def.targetSpec.resourceTypeId))
 )
 
 const notSharedButEssentialDefs = computed(
 	()=>props.requirementDefs
+		.filter(isVisible)
 		.filter(isNotSharedButEssential)
 		.filter(def => !resourceStackNodeContext.isIgnoredTargetType(def.targetSpec.resourceTypeId))
 )
 
 const exclusiveButNotEssentialDefs = computed(
 	()=>props.requirementDefs
+		.filter(isVisible)
 		.filter(isExclusiveButNotEssential)
 		.filter(def => !resourceStackNodeContext.isIgnoredTargetType(def.targetSpec.resourceTypeId))
 )
 
-const notExclusiveDefs = computed(()=>props.requirementDefs.filter(isNotExclusive))
+const notExclusiveDefs = computed(()=>props.requirementDefs.filter(isVisible).filter(isNotExclusive))
 
 function filterNewRequirementsByDef(requirementDef){
 	if(newRequirements.value === undefined){

@@ -159,7 +159,18 @@ export const ResourceStates = {
         name: '资源紧张',
         icon: 'Warning',
         type: 'warning'
-    }
+    },
+
+    EXECUTING:{
+        name: '正在执行',
+        icon: 'Loading',
+        type: 'primary'
+    },
+    FINISHED:{
+        name: '已完成',
+        icon: 'CircleCheck',
+        type: 'success'
+    },
 }
 
 
