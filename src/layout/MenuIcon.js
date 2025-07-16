@@ -114,46 +114,18 @@ export function getMenuItemIcon(menuName) {
             return 'Message'
         case '云资源事件':
             return 'Bell'
-        case 'Deployment':
-            return 'Menu'
-        case 'DaemonSet':
-            return 'Menu'
-        case 'StatefulSet':
-            return 'Menu'
+        case '工作负载':
+            return resolveSvgIcon('Deployment')
         case 'Pod':
-            return 'Cpu'
-        case 'Job':
-            return 'List'
-        case 'CronJob':
-            return 'AlarmClock'
-        case 'Volume':
-            return resolveSvgIcon('Disk')
-        case 'PV':
-            return resolveSvgIcon('Disk')
-        case 'PVC':
-            return resolveSvgIcon('Disk')
-        case 'StorageClass':
+            return resolveSvgIcon('Container')
+        case '容器存储':
             return 'Coin'
-        case 'ConfigMap':
+        case '容器网络':
+            return resolveSvgIcon('Internet')
+        case '集群配置':
             return 'Tools'
-        case 'Secret':
-            return resolveSvgIcon('ApiKey')
-        case 'Service':
-            return resolveSvgIcon('Vpc')
-        case 'Ingress':
-            return resolveSvgIcon('Vpc')
-        case 'IngressClass':
-            return resolveSvgIcon('Vpc')
-        case 'EndpointSlice':
-            return resolveSvgIcon('LocalIp')
-        case 'NetworkPolicy':
-            return resolveSvgIcon('Security')
-        case 'Namespace':
-            return 'House'
-        case 'Node':
+        case '集群节点':
             return 'Cpu'
-        case 'RuntimeClass':
-            return 'Tools'
     }
 
     return 'MostlyCloudy'
@@ -175,14 +147,8 @@ export function getSubMenuIcon(subMenuName) {
             return 'Expand'
         case '运维自动化':
             return 'CoffeeCup'
-        case '容器工作负载':
-            return 'Cpu'
-        case '容器存储':
-            return 'Coin'
-        case '容器网络':
-            return resolveSvgIcon('Internet')
-        case '容器集群':
-            return 'Grid'
+        case '容器相关':
+            return resolveSvgIcon('Container')
     }
 
     return 'MostlyCloudy'
