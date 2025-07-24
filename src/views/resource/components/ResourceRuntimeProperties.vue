@@ -28,8 +28,9 @@ const props = defineProps({
 					</div>
 				</ElTag>
 				<template #content>
-					<div style="max-width: 150px">
-						{{runtimeProperty.valueName}}
+					<div
+						style="max-width: 150px;white-space: pre-wrap;overflow: auto"
+						v-html="runtimeProperty.valueName">
 					</div>
 				</template>
 			</ElTooltip>
