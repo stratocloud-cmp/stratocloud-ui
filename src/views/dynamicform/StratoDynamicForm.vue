@@ -7,6 +7,7 @@ import DynamicFormNumber from '@/views/dynamicform/DynamicFormNumber.vue'
 import DynamicFormBoolean from '@/views/dynamicform/DynamicFormBoolean.vue'
 import DynamicFormIp from '@/views/dynamicform/DynamicFormIp.vue'
 import DynamicFormCodeBlock from '@/views/dynamicform/DynamicFormCodeBlock.vue'
+import DynamicFormNestedForm from '@/views/dynamicform/DynamicFormNestedForm.vue'
 
 const props = defineProps({
 	formMetaData: {
@@ -49,6 +50,7 @@ function getFormItemComponent(type){
 		case 'BooleanField': return DynamicFormBoolean
 		case 'IpField': return DynamicFormIp
 		case 'CodeBlockField': return DynamicFormCodeBlock
+		case 'NestedFormField': return DynamicFormNestedForm
 	}
 
 	return undefined
@@ -63,6 +65,24 @@ for (let fieldInfo of props.formMetaData.fieldInfoList) {
 		if(!formData.value[fieldInfo.key]){
 			formData.value[fieldInfo.key] = {
 				customFormData: {}
+			}
+		}
+	}
+
+	if(fieldInfo.type === 'NestedFormField' && fieldInfo.detail){
+		if(!formData.value[fieldInfo.key]){
+			if(fieldInfo.detail.defaultValues && fieldInfo.detail.defaultValues.length>0){
+				if(fieldInfo.detail.multiple){
+					formData.value[fieldInfo.key] = fieldInfo.detail.defaultValues
+				} else {
+					formData.value[fieldInfo.key] = fieldInfo.detail.defaultValues[0]
+				}
+			} else {
+				if(fieldInfo.detail.multiple){
+					formData.value[fieldInfo.key] = []
+				} else {
+					formData.value[fieldInfo.key] = {}
+				}
 			}
 		}
 	}
