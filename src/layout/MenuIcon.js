@@ -126,6 +126,14 @@ export function getMenuItemIcon(menuName) {
             return 'Tools'
         case '集群节点':
             return 'Cpu'
+        case '存储桶':
+            return 'Coin'
+        case '存储桶ACL':
+            return 'Coin'
+        case '存储桶CORS':
+            return 'Coin'
+        case '存储桶生命周期':
+            return 'Coin'
     }
 
     return 'MostlyCloudy'
