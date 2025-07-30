@@ -171,6 +171,17 @@ export const ResourceStates = {
         icon: 'CircleCheck',
         type: 'success'
     },
+
+    ENABLED: {
+        name: '已启用',
+        icon: 'Check',
+        type: 'success'
+    },
+    DISABLED: {
+        name: '已停用',
+        icon: 'Close',
+        type: 'warning'
+    }
 }
 
 
