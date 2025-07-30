@@ -20,6 +20,7 @@ const props = defineProps({
 				conditions: [],
 				regex: undefined,
 				regexMessage: undefined,
+				disabled: false
 			},
 		}
 	}
@@ -68,6 +69,7 @@ function isConditionsMatched(){
 			</span>
 		</template>
 		<ElInput
+			:disabled="fieldInfo.detail?.disabled"
 			:type="fieldInfo.detail?.inputType"
 			:show-password="fieldInfo.detail?.inputType==='password'"
 			:autocomplete="fieldInfo.detail?.inputType==='password'?'new-password':'off'"
