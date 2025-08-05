@@ -89,8 +89,8 @@ function getNestedFormValidator(){
 				添加{{ fieldInfo.label }}
 			</ElButton>
 			<template v-for="(formData, index) in model">
-				<ElRow>
-					<ElCol :span="4" style="font-size: 14px">
+				<ElCard style="margin-left: 24px;margin-bottom: 24px">
+					<template #header>
 						<ElButton
 							circle
 							link
@@ -100,15 +100,15 @@ function getNestedFormValidator(){
 							@click="()=>triggerRemoveNestedForm(formData)"
 						/>
 						{{ fieldInfo.label+(index+1) }}
-					</ElCol>
-					<ElCol :span="20">
+					</template>
+					<template #default>
 						<StratoDynamicForm
 							ref="nestedFormRefs"
 							:form-meta-data="fieldInfo.detail?.nestedFormMetadata"
 							v-model="model[index]"
 						/>
-					</ElCol>
-				</ElRow>
+					</template>
+				</ElCard>
 			</template>
 		</div>
 		<div v-else>

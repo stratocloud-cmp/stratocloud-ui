@@ -8,6 +8,7 @@ import DynamicFormBoolean from '@/views/dynamicform/DynamicFormBoolean.vue'
 import DynamicFormIp from '@/views/dynamicform/DynamicFormIp.vue'
 import DynamicFormCodeBlock from '@/views/dynamicform/DynamicFormCodeBlock.vue'
 import DynamicFormNestedForm from '@/views/dynamicform/DynamicFormNestedForm.vue'
+import DynamicFormDateTime from '@/views/dynamicform/DynamicFormDateTime.vue'
 
 const props = defineProps({
 	formMetaData: {
@@ -51,6 +52,7 @@ function getFormItemComponent(type){
 		case 'IpField': return DynamicFormIp
 		case 'CodeBlockField': return DynamicFormCodeBlock
 		case 'NestedFormField': return DynamicFormNestedForm
+		case 'DateTimeField': return DynamicFormDateTime
 	}
 
 	return undefined
@@ -96,6 +98,7 @@ for (let fieldInfo of props.formMetaData.fieldInfoList) {
 	<ElForm :size="size" ref="formRef" :model="formData" label-position="top" hide-required-asterisk>
 		<template v-for="fieldInfo in formMetaData.fieldInfoList">
 			<component
+				style="margin-top: 5px"
 				v-model="formData[fieldInfo.key]"
 				:is="getFormItemComponent(fieldInfo.type)"
 				:field-info="fieldInfo" />
