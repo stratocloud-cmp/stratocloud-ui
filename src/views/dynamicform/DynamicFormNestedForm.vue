@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
 import {useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
@@ -33,9 +33,9 @@ onMounted(()=>{
 
 const dynamicFormContext = useDynamicFormContext()
 
-function isConditionsMatched(){
-	return dynamicFormContext.isConditionsMatched(props.fieldInfo.detail.conditions)
-}
+const isConditionsMatched = computed(
+	() => dynamicFormContext.isConditionsMatched(props.fieldInfo.detail.conditions)
+)
 
 function triggerAddNewNestedForm(){
 	model.value.push({})
@@ -47,24 +47,35 @@ function triggerRemoveNestedForm(formData){
 
 const nestedFormRefs = ref([])
 
-const rules = [
+const nestedFormRef = ref()
+
+const rules = ref([
 	{
 		validator: getNestedFormValidator(),
-		trigger: ['blur', 'change'],
+		trigger: ['change'],
 	}
-]
+])
 
 function getNestedFormValidator(){
 	return (_rule, _value, callback)=>{
-		validateForms(nestedFormRefs.value, callback)
+		validateForms(
+			props.fieldInfo.detail?.multiple ? nestedFormRefs.value : [nestedFormRef.value],
+			(valid, _fields) => {
+				if(valid)
+					callback()
+				else
+					callback(new Error(props.fieldInfo.label+'校验失败'))
+			}
+		)
 	}
 }
 
 </script>
 
 <template>
-	<ElFormItem v-if="isConditionsMatched()" :prop="fieldInfo.key" :label="fieldInfo.label" :rules="rules">
-		<template #label>
+	<div v-if="isConditionsMatched">
+		<ElFormItem :prop="fieldInfo.key" :label="fieldInfo.label" :rules="rules">
+			<template #label>
 			<span>
 				{{fieldInfo.label}}
 				<ElTooltip v-if="fieldInfo.description">
@@ -76,15 +87,15 @@ function getNestedFormValidator(){
 					</ElIcon>
 				</ElTooltip>
 			</span>
-		</template>
-
+			</template>
+		</ElFormItem>
 		<div v-if="fieldInfo.detail?.multiple" style="width: 100%;">
 			<ElButton
 				type="primary"
 				link
 				icon="Plus"
 				@click="triggerAddNewNestedForm"
-				style="margin-bottom: 18px;margin-top: 12px"
+				style="margin-bottom: 18px;"
 			>
 				添加{{ fieldInfo.label }}
 			</ElButton>
@@ -113,12 +124,13 @@ function getNestedFormValidator(){
 		</div>
 		<div v-else>
 			<StratoDynamicForm
-				ref="nestedFormRefs"
+				ref="nestedFormRef"
 				:form-meta-data="fieldInfo.detail?.nestedFormMetadata"
 				v-model="model"
 			/>
 		</div>
-	</ElFormItem>
+	</div>
+
 </template>
 
 <style scoped>

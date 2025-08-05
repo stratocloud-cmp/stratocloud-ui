@@ -4,6 +4,7 @@ import {ref} from 'vue'
 import ResourceSelector from '@/views/resource/components/ResourceSelector.vue'
 import ResourceActionDynamicForm from '@/views/resource/forms/ResourceActionDynamicForm.vue'
 import ActionSelector from '@/views/resource/components/ActionSelector.vue'
+import {validateForms} from '@/utils/FormUtil.js'
 
 const formData = defineModel({
 	required: true,
@@ -24,10 +25,11 @@ const props = defineProps({
 defineExpose({validate})
 
 function validate(callback){
-	formRef.value.validate(callback)
+	validateForms([formRef.value, ...dynamicFormRefs.value], callback)
 }
 
 const formRef = ref()
+const dynamicFormRefs =ref([])
 
 function addItem(){
 	formData.value.push({
@@ -77,6 +79,7 @@ function removeItem(index){
 			</ElRow>
 
 			<ResourceActionDynamicForm
+				ref="dynamicFormRefs"
 				v-if="item.resourceId && item.actionId"
 				v-model="item.parameters"
 				:action-id="item.actionId"

@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
 import {useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 import StratoCodeBlock from '@/components/StratoCodeBlock.vue'
@@ -38,14 +38,14 @@ onMounted(()=>{
 
 const dynamicFormContext = useDynamicFormContext()
 
-function isConditionsMatched(){
-	return dynamicFormContext.isConditionsMatched(props.fieldInfo.detail.conditions)
-}
+const isConditionsMatched = computed(
+	() => dynamicFormContext.isConditionsMatched(props.fieldInfo.detail.conditions)
+)
 
 </script>
 
 <template>
-	<ElFormItem v-if="isConditionsMatched()" :prop="fieldInfo.key" :label="fieldInfo.label" :rules="rules">
+	<ElFormItem v-if="isConditionsMatched" :prop="fieldInfo.key" :label="fieldInfo.label" :rules="rules">
 		<template #label>
 			<span>
 				{{fieldInfo.label}}

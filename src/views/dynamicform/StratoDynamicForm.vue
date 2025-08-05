@@ -98,7 +98,7 @@ for (let fieldInfo of props.formMetaData.fieldInfoList) {
 	<ElForm :size="size" ref="formRef" :model="formData" label-position="top" hide-required-asterisk>
 		<template v-for="fieldInfo in formMetaData.fieldInfoList">
 			<component
-				style="margin-top: 5px"
+				style="margin-bottom: 12px"
 				v-model="formData[fieldInfo.key]"
 				:is="getFormItemComponent(fieldInfo.type)"
 				:field-info="fieldInfo" />
