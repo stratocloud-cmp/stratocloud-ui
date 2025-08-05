@@ -1,5 +1,5 @@
 <script setup>
-import {computed, onMounted, ref} from 'vue'
+import {computed, onMounted} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
 import {useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 
