@@ -1,7 +1,7 @@
 <script setup>
-import {ref, shallowRef, watch} from 'vue'
+import {ref, watch} from 'vue'
 import {QuestionFilled} from '@element-plus/icons-vue'
-import {getSelectorComponentByEntityType, useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
+import {useDynamicFormContext} from '@/views/dynamicform/DynamicFormUtil.js'
 
 const model = defineModel()
 
