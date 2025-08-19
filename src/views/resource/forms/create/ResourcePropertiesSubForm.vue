@@ -5,6 +5,7 @@ import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
 import TagValueSelectorGroup from '@/views/tag/TagValueSelectorGroup.vue'
 import {ElFormItem} from 'element-plus'
 import {useResourceStackContext} from '@/views/stack/ResourceStackContext.js'
+import {useAccountContext} from '@/views/resource/composables/AccountContext.js'
 
 const props = defineProps({
 	resourceTypeSpec: {
@@ -54,14 +55,20 @@ function validate(callback) {
 
 const formMetaData = ref()
 
-onMounted(()=>{
+const accountContext = useAccountContext()
+const dynamicFormLoading = ref(false)
+watch(()=>accountContext.accountId.value, ()=>{
+	dynamicFormLoading.value = true
 	describeResourceActionForm({
 		resourceTypeId: props.resourceTypeSpec.resourceTypeId,
+		accountId: accountContext.accountId.value,
 		actionId: 'BUILD_RESOURCE'
 	}).then(resp=>{
 		formMetaData.value = resp.formMetaData
+	}).finally(()=>{
+		dynamicFormLoading.value = false
 	})
-})
+}, {immediate: true})
 
 const tagRef = ref()
 
@@ -97,11 +104,12 @@ watch(()=>resourceStackContext.tags.value, ()=>{
 	<ElForm ref="formRef" :model="newResource" :rules="rules" label-position="top">
 		<StratoDynamicForm
 			ref="dynamicFormRef"
-			v-if="formMetaData"
+			v-if="formMetaData && !dynamicFormLoading"
 			:form-meta-data="formMetaData"
 			v-model="newResource.properties"
 			:args="dynamicFormArgs"
 		/>
+		<ElSkeleton v-else-if="dynamicFormLoading" :rows="3" animated />
 		<ElFormItem prop="resourceName" :label="`${resourceTypeSpec.resourceCategoryName}名称`">
 			<ElInput
 				placeholder="留空将按命名规则自动生成"

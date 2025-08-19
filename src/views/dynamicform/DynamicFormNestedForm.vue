@@ -74,20 +74,7 @@ function getNestedFormValidator(){
 
 <template>
 	<div v-if="isConditionsMatched">
-		<ElFormItem :prop="fieldInfo.key" :label="fieldInfo.label" :rules="rules">
-			<template #label>
-			<span>
-				{{fieldInfo.label}}
-				<ElTooltip v-if="fieldInfo.description">
-					<template #content>
-						<div style="white-space: pre-wrap" v-html="fieldInfo.description"></div>
-					</template>
-					<ElIcon style="cursor: pointer;">
-						<QuestionFilled />
-					</ElIcon>
-				</ElTooltip>
-			</span>
-			</template>
+		<ElFormItem :prop="fieldInfo.key" :rules="rules">
 		</ElFormItem>
 		<div v-if="fieldInfo.detail?.multiple" style="width: 100%;">
 			<ElButton
@@ -97,10 +84,20 @@ function getNestedFormValidator(){
 				@click="triggerAddNewNestedForm"
 				style="margin-bottom: 18px;"
 			>
-				添加{{ fieldInfo.label }}
+				<span>
+					添加{{ fieldInfo.label }}
+					<ElTooltip v-if="fieldInfo.description">
+						<template #content>
+							<div style="white-space: pre-wrap" v-html="fieldInfo.description"></div>
+						</template>
+						<ElIcon style="cursor: pointer;">
+							<QuestionFilled />
+						</ElIcon>
+					</ElTooltip>
+				</span>
 			</ElButton>
 			<template v-for="(formData, index) in model">
-				<ElCard style="margin-left: 24px;margin-bottom: 24px">
+				<ElCard style="margin-bottom: 24px">
 					<template #header>
 						<ElButton
 							circle
@@ -110,7 +107,7 @@ function getNestedFormValidator(){
 							type="danger"
 							@click="()=>triggerRemoveNestedForm(formData)"
 						/>
-						{{ fieldInfo.label+(index+1) }}
+						<span style="font-size: 14px">{{ fieldInfo.label+(index+1) }}</span>
 					</template>
 					<template #default>
 						<StratoDynamicForm
@@ -123,11 +120,28 @@ function getNestedFormValidator(){
 			</template>
 		</div>
 		<div v-else>
-			<StratoDynamicForm
-				ref="nestedFormRef"
-				:form-meta-data="fieldInfo.detail?.nestedFormMetadata"
-				v-model="model"
-			/>
+			<ElCard style="margin-bottom: 24px">
+				<template #header>
+					<span style="font-size: 14px">
+						{{ fieldInfo.label }}
+						<ElTooltip v-if="fieldInfo.description">
+							<template #content>
+								<div style="white-space: pre-wrap" v-html="fieldInfo.description"></div>
+							</template>
+							<ElIcon style="cursor: pointer;">
+								<QuestionFilled />
+							</ElIcon>
+						</ElTooltip>
+					</span>
+				</template>
+				<template #default>
+					<StratoDynamicForm
+						ref="nestedFormRef"
+						:form-meta-data="fieldInfo.detail?.nestedFormMetadata"
+						v-model="model"
+					/>
+				</template>
+			</ElCard>
 		</div>
 	</div>
 

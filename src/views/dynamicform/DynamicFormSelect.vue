@@ -80,7 +80,7 @@ const isConditionsMatched = computed(
 			filterable
 			:multiple="fieldInfo.detail.multiSelect"
 			:allow-create="fieldInfo.detail.allowCreate"
-			:placeholder="'请选择'+fieldInfo.label"
+			:placeholder="fieldInfo.detail.placeholder ? fieldInfo.detail.placeholder : ('请选择'+fieldInfo.label)"
 		>
 			<ElOption
 				v-for="(item, index) in fieldInfo.detail.options"
@@ -94,7 +94,7 @@ const isConditionsMatched = computed(
 			:is="entitySelector"
 			v-model="model"
 			:multiple="fieldInfo.detail.multiSelect"
-			:placeholder="'请选择'+fieldInfo.label"
+			:placeholder="fieldInfo.detail.placeholder ? fieldInfo.detail.placeholder : ('请选择'+fieldInfo.label)"
 		/>
 		<div v-else>Unknown options source: {{fieldInfo.detail.source}}</div>
 	</ElFormItem>
