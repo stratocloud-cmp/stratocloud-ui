@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, watch} from 'vue'
+import {ref, watch} from 'vue'
 import {describeResourceActionForm} from '@/api/resource.js'
 import StratoDynamicForm from '@/views/dynamicform/StratoDynamicForm.vue'
 import TagValueSelectorGroup from '@/views/tag/TagValueSelectorGroup.vue'
