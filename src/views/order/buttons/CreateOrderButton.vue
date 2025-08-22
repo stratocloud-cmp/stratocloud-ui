@@ -108,7 +108,6 @@ function clear(){
 <template>
 	<StratoButton
 		type="primary"
-		plain
 		@click="openDrawer"
 	>
 		新建

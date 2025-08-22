@@ -20,6 +20,7 @@ const props = defineProps({
 				<ElTag
 					v-show="runtimeProperty.displayable && (!inList || runtimeProperty.displayInList)"
 					type="info"
+					style="margin-right: 2px"
 				>
 					<div style="display: flex;flex-wrap: nowrap">
 						<div class="in-list-overflow">

@@ -9,6 +9,7 @@ import StratoDrawer from '@/components/StratoDrawer.vue'
 import {changePassword, describeUsers, updateUser} from '@/api/user.js'
 import UpdateUserForm from '@/views/user/UpdateUserForm.vue'
 import {ElNotification} from 'element-plus'
+import {UseDark} from '@vueuse/components'
 
 
 const sessionStore = useSessionStore()
@@ -81,9 +82,15 @@ function handleCommand(command){
 		case 'updateSelf':
 			openUpdateDrawer()
 			break
+		case 'changeUiSetting':
+			openUiSettingDrawer()
 	}
 }
 
+const uiSettingDrawerFlag = ref(false)
+function openUiSettingDrawer(){
+	uiSettingDrawerFlag.value = true
+}
 
 </script>
 
@@ -94,6 +101,7 @@ function handleCommand(command){
 			<ElDropdownMenu>
 				<ElDropdownItem command="updateSelf">个人信息</ElDropdownItem>
 				<ElDropdownItem command="changePassword">修改密码</ElDropdownItem>
+				<ElDropdownItem command="changeUiSetting">界面设置</ElDropdownItem>
 				<ElDropdownItem command="logout">退出登录</ElDropdownItem>
 			</ElDropdownMenu>
 		</template>
@@ -104,17 +112,26 @@ function handleCommand(command){
 	<StratoDrawer v-model="updateDrawerFlag" title="个人信息" @onConfirm="onUpdateSelf">
 		<UpdateUserForm ref="updateFormRef" v-model="updateFormData" />
 	</StratoDrawer>
+	<StratoDrawer v-model="uiSettingDrawerFlag" title="界面设置" no-confirm>
+		<ElForm>
+			<ElFormItem label="深色主题">
+				<UseDark v-slot="{ isDark, toggleDark }">
+					<ElSwitch
+						:model-value="isDark"
+						@change="toggleDark()"
+					/>
+				</UseDark>
+			</ElFormItem>
+		</ElForm>
+	</StratoDrawer>
 </template>
 
 <style lang="scss">
 .user-config-button{
-	color: white;
 	border: 0;
 	outline: none;
 }
 .user-config-button:hover{
-	background-color: rgba(7, 0, 112, 0.25);
-	color: white;
 	border: 0;
 	outline: none;
 }

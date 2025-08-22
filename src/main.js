@@ -11,6 +11,8 @@ import App from './App.vue'
 
 import stratoRouter from '@/router'
 
+import 'virtual:svg-icons-register';
+
 const app = createApp(App)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

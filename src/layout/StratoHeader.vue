@@ -15,6 +15,8 @@ import {useRouter} from 'vue-router'
 import StratoHeaderUserConfigButton from '@/layout/StratoHeaderUserConfigButton.vue'
 import StratoHeaderCartButton from '@/layout/StratoHeaderCartButton.vue'
 import StratoHeaderInternalMailButton from '@/layout/StratoHeaderInternalMailButton.vue'
+import StratoIcon from '@/components/StratoIcon.vue'
+import {useDark} from '@vueuse/core'
 
 const defaultActiveMenuIndex = ref('0')
 
@@ -217,10 +219,14 @@ onMounted(async ()=>{
     }
 })
 
+const isDark = useDark()
 </script>
 <template>
     <div class="strato-header">
-        <img style="margin-left: 5px;" src="/svg/StratoCloudSmall.svg" alt="StratoCloud"/>
+	    <StratoIcon
+		    :style="{width: '200px', height: '30px', fill: isDark?'white':'#8100d1'}"
+		    icon-name="StratoCloudSmall">
+	    </StratoIcon>
         <ElMenu :default-active="defaultActiveMenuIndex" style="margin-right: 200px;border: 0;" mode="horizontal" :ellipsis="false">
             <ElMenuItem
                 class="strato-menu-item"
@@ -255,14 +261,5 @@ onMounted(async ()=>{
 .strato-menu-item{
     font-size: 18px;
 }
-.strato-menu-item:hover{
-    background-color: rgba(7, 0, 112, 0.25);
-}
-.is-active{
-    background-color: rgba(7, 0, 112, 0.25);
-}
 
-.el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover{
-    background-color: rgba(7, 0, 112, 0.25);
-}
 </style>

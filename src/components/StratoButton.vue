@@ -46,7 +46,7 @@ const attrs = useAttrs()
 .strato-button-text{
     font-weight: 400;
     letter-spacing: 0.2rem;
-    color: white;
+    //color: white;
     font-size: 16px;
 	width: 100%;
 	height: 100%;
@@ -54,7 +54,7 @@ const attrs = useAttrs()
 .strato-button-disabled-text{
 	font-weight: 400;
 	letter-spacing: 0.2rem;
-	color: grey;
+	color: lightgrey;
 	font-size: 16px;
 	width: 100%;
 	height: 100%;
@@ -66,7 +66,7 @@ const attrs = useAttrs()
 .strato-button-text-small{
 	font-weight: 400;
 	letter-spacing: 0.2rem;
-	color: white;
+	//color: white;
 	font-size: 12px;
 	width: 100%;
 	height: 100%;
@@ -74,7 +74,7 @@ const attrs = useAttrs()
 .strato-button-disabled-text-small{
 	font-weight: 400;
 	letter-spacing: 0.2rem;
-	color: grey;
+	color: lightgrey;
 	font-size: 12px;
 	width: 100%;
 	height: 100%;

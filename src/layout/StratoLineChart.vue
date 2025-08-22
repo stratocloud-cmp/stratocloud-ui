@@ -1,6 +1,7 @@
 <script setup>
 import { Chart } from '@antv/g2';
 import {onMounted, ref, watch} from 'vue'
+import {useDark} from '@vueuse/core'
 
 const props = defineProps({
 	chartId: {
@@ -67,12 +68,13 @@ function getChartData(){
 	return result
 }
 
+const isDark = useDark()
 
 function render() {
 	const chart = new Chart({
 		container: props.chartId,
 		autoFit: true,
-		theme: 'dark'
+		theme: isDark.value ? 'dark' : 'light'
 	})
 	chart
 		.line()

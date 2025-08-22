@@ -18,6 +18,7 @@ const props = defineProps({
 				allowFutureTime: false,
 				isRange: false,
 				dateOnly: false,
+				timeOnly: false,
 				required: true,
 				conditions: []
 			},
@@ -72,6 +73,15 @@ const isConditionsMatched = computed(
 			start-placeholder="起始时间"
 			end-placeholder="结束时间"
 		/>
+		<ElTimePicker
+			v-else-if="fieldInfo.detail?.timeOnly"
+			:is-range="fieldInfo.detail?.isRange"
+			v-model="model"
+			value-format="HH:mm"
+			format="HH:mm"
+			start-placeholder="起始时间"
+			end-placeholder="结束时间"
+		/>
 		<ElDatePicker
 			v-else-if="fieldInfo.detail?.isRange && !fieldInfo.detail?.dateOnly"
 			type="datetimerange"
@@ -86,6 +96,7 @@ const isConditionsMatched = computed(
 			v-model="model"
 			value-format="YYYY-MM-DD HH:mm:ss"
 		/>
+
 		<ElDatePicker
 			v-else
 			type="date"

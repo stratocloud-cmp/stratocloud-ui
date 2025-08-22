@@ -1,4 +1,5 @@
 import {defineComponent, h} from 'vue'
+import StratoIcon from '@/components/StratoIcon.vue'
 
 export function getMenuItemIcon(menuName) {
     switch (menuName) {
@@ -23,7 +24,7 @@ export function getMenuItemIcon(menuName) {
         case '密钥对':
             return resolveSvgIcon('ApiKey')
         case '私有网络':
-            return resolveSvgIcon('Vpc')
+            return resolveSvgIcon('Vpc', '20px')
         case '子网':
             return resolveSvgIcon('LocalIp')
         case '弹性IP':
@@ -75,9 +76,9 @@ export function getMenuItemIcon(menuName) {
         case '资源栈':
             return 'Menu'
         case '负载均衡实例':
-            return resolveSvgIcon('Vpc')
+            return resolveSvgIcon('Vpc', '20px')
         case '监听器':
-            return resolveSvgIcon('Vpc')
+            return resolveSvgIcon('Vpc', '20px')
         case '后端服务':
             return resolveSvgIcon('LocalIp')
         case '后端服务器组':
@@ -93,7 +94,7 @@ export function getMenuItemIcon(menuName) {
         case 'LB可用区':
             return 'Grid'
         case 'LB规格':
-            return resolveSvgIcon('Vpc')
+            return resolveSvgIcon('Vpc', '20px')
         case '脚本库':
             return 'Tickets'
         case '软件库':
@@ -134,6 +135,8 @@ export function getMenuItemIcon(menuName) {
             return 'Coin'
         case '存储桶生命周期':
             return 'Coin'
+        case '关系型数据库':
+            return resolveSvgIcon('Rdb')
     }
 
     return 'MostlyCloudy'
@@ -150,25 +153,28 @@ export function getSubMenuIcon(subMenuName) {
         case '网络':
             return resolveSvgIcon('Internet')
         case '负载均衡':
-            return resolveSvgIcon('Vpc')
+            return resolveSvgIcon('Vpc', '20px')
         case '其他':
             return 'Expand'
         case '运维自动化':
             return 'CoffeeCup'
         case '容器相关':
             return resolveSvgIcon('Container')
+        case '云数据库':
+            return resolveSvgIcon('CloudDatabase')
     }
 
     return 'MostlyCloudy'
 }
 
-function resolveSvgIcon(name){
+function resolveSvgIcon(name, size){
     return  defineComponent({
         setup(){
             return () => h(
-                'img',{
-                    src: `/svg/${name}.svg`
-                }
+                StratoIcon,{
+                    iconName: name,
+                    style: { fontSize: size ? size : '16px' },
+                },
             )
         }
     })

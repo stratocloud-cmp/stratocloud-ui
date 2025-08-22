@@ -1,9 +1,10 @@
 <script setup>
 import StratoButton from '@/components/StratoButton.vue'
+import {useDark} from '@vueuse/core'
 
 const props = defineProps(
     {
-        'title':{}, 
+        'title':{},
         'noConfirm': {
             default: false,
             required: false,
@@ -37,12 +38,14 @@ function onConfirm(){
     emit('onConfirm')
 }
 
+const isDark = useDark()
+
 </script>
 <template>
-    <ElDrawer v-model="model">
+    <ElDrawer :class="isDark ? 'strato-drawer-dark':'strato-drawer-light'" v-model="model">
         <template #header>
-            <div style="font-size: 20px; color: white;">
-                {{ props.title }}
+            <div :style="{fontSize: '20px',color: isDark ? 'white' : undefined}">
+                {{ title }}
             </div>
         </template>
         <template #default>
@@ -60,7 +63,7 @@ function onConfirm(){
                 <StratoButton @click="onClose">
 	                关闭
                 </StratoButton>
-                <StratoButton :loading="loading" v-if="!props.noConfirm" type="primary" @click="onConfirm">
+                <StratoButton :loading="loading" v-if="!noConfirm" type="primary" @click="onConfirm">
 	                确定
                 </StratoButton>
             </div>
@@ -70,9 +73,13 @@ function onConfirm(){
 
 <style lang="scss">
 
-.el-drawer{
+.strato-drawer-dark{
     background: rgba(55, 55, 55, .5);
     backdrop-filter: blur(20px);
+}
+
+.strato-drawer-light{
+	background: rgba(250, 250, 250);
 }
 
 

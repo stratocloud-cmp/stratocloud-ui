@@ -12,22 +12,28 @@ import {
 
 import * as monaco from 'monaco-editor'
 import { editorProps } from './MonacoEditorType'
-
 import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
+import JsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
+
+import {useDark} from '@vueuse/core'
 
 export default defineComponent({
 	name: 'StratoCodeBlock',
 	props: editorProps,
 	emits: ['update:modelValue', 'change', 'editor-mounted'],
 	setup(props, { emit }) {
+
 		// noinspection JSUnusedGlobalSymbols
 		window.MonacoEnvironment = {
 			getWorker(_: string, label: string) {
+				if(label === 'json')
+					return new JsonWorker()
 				return new EditorWorker()
 			},
 		}
 		let editor: any
 		const codeEditBox = ref()
+		const isDark = useDark()
 
 		const init = () => {
 			monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
@@ -52,7 +58,7 @@ export default defineComponent({
 				value: props.modelValue,
 				language: props.language,
 				readOnly: props.readOnly,
-				theme: props.theme,
+				theme: isDark.value ? 'strato-dark' : 'vs',
 				...props.options,
 			})
 
@@ -76,7 +82,16 @@ export default defineComponent({
 				}
 			},
 		)
-
+		watch(
+			() => isDark.value,
+			(newValue) => {
+				if(newValue){
+					monaco.editor.setTheme('strato-dark')
+				}else {
+					monaco.editor.setTheme('vs')
+				}
+			}
+		)
 		watch(
 			() => props.options,
 			(newValue) => {

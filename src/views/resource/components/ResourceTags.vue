@@ -49,7 +49,7 @@ function confirmAssociateTags(){
 
 <template>
 	<template v-if="props.resource.tags && props.resource.tags.length > 0">
-		<ElTag v-for="tag in props.resource.tags" type="info" :closable="!inList" @close="()=>onRemoveTag(tag)">
+		<ElTag style="margin-right: 2px" v-for="tag in props.resource.tags" type="info" :closable="!inList" @close="()=>onRemoveTag(tag)">
 			<div :class="inList?'in-list-overflow':undefined">
 				{{tag.tagKeyName}}:&nbsp;{{tag.tagValueName}}
 			</div>

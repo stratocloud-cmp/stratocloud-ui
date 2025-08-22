@@ -33,15 +33,6 @@ const showingRead = ref(false)
 
 <style lang="scss">
 .job-button{
-	color: white;
 	border: 0;
-}
-.job-button:hover{
-	background-color: rgba(7, 0, 112, 0.25);
-	color: white;
-}
-.el-popover.el-popper{
-	background: rgba(55, 55, 55, .5);
-	backdrop-filter: blur(20px);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <template v-if="activeMenuStore.activeMenu">
 	    <ElMenu
-		    class="strato-menu"
+		    :class="isDark ? 'strato-menu':'strato-menu-light'"
 		    router
 		    :default-active="activeMenuStore.activeMenu.path"
 		    unique-opened
@@ -19,7 +19,7 @@
 					    </template>
 					    <template v-for="subItem in item.items">
 						    <ElMenuItem
-							    class="strato-menu-item"
+							    :class="isDark ? 'strato-menu-item':'strato-menu-item-light'"
 							    :index="subItem.path"
 							    @click="setActiveMenu(subItem)"
 						    >
@@ -35,7 +35,7 @@
 			    </template>
 			    <template v-else>
 				    <ElMenuItem
-					    class="strato-menu-item"
+					    :class="isDark ? 'strato-menu-item':'strato-menu-item-light'"
 					    :index="item.path"
 					    @click="setActiveMenu(item)"
 				    >
@@ -58,6 +58,7 @@ import {computed, onMounted} from 'vue';
 import { useActiveMenuStore } from '@/stores/activeMenu'
 import {getMenuItemIcon, getSubMenuIcon} from '@/layout/MenuIcon.js'
 import {useRouter} from 'vue-router'
+import {useDark} from '@vueuse/core'
 
 const router = useRouter()
 
@@ -102,6 +103,7 @@ onMounted(()=>{
     }
 })
 
+const isDark = useDark()
 </script>
 
 <!--suppress CssUnusedSymbol -->
@@ -110,7 +112,14 @@ onMounted(()=>{
     height: 100%;
 	border: 0;
 }
+.strato-menu-light{
+	height: 100%;
+	border: 0;
+}
 .strato-menu-item{
     font-size: 18px;
+}
+.strato-menu-item-light{
+	font-size: 18px;
 }
 </style>
