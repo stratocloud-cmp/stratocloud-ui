@@ -19,6 +19,7 @@ const props = defineProps({
 				conditions: [],
 				min: undefined,
 				max: undefined,
+				step: undefined,
 				placeholder: undefined
 			},
 		}
@@ -65,6 +66,7 @@ const isConditionsMatched = computed(
 			v-model="model"
 			:min="fieldInfo.detail.min"
 			:max="fieldInfo.detail.max"
+			:step="fieldInfo.detail.step"
 			:placeholder="fieldInfo.detail.placeholder" />
 	</ElFormItem>
 </template>

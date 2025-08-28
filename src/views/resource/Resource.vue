@@ -211,6 +211,7 @@ function checkIsMonitoredCategory(){
 		'HOST',
 		'LOAD_BALANCER',
 		'DATASTORE',
+		'RELATIONAL_DB_INSTANCE'
 	].includes(currentCategory.value)
 }
 

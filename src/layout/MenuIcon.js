@@ -135,8 +135,10 @@ export function getMenuItemIcon(menuName) {
             return 'Coin'
         case '存储桶生命周期':
             return 'Coin'
-        case '关系型数据库':
+        case '关系型实例':
             return resolveSvgIcon('Rdb')
+        case '实例规格':
+            return resolveSvgIcon('CloudDatabase')
     }
 
     return 'MostlyCloudy'
