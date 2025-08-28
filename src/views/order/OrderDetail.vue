@@ -119,6 +119,7 @@ function closeDrawer(){
 	</StratoDrawer>
 </template>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 .el-collapse-item__content {
 	font-size: unset;
