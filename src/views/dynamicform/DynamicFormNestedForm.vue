@@ -28,7 +28,11 @@ const props = defineProps({
 })
 
 onMounted(()=>{
-
+	if(props.fieldInfo.detail.multiple && model.value && model.value.length === 0 && props.fieldInfo.detail.multipleMin){
+		for (let i = 0; i < props.fieldInfo.detail.multipleMin; i++) {
+			triggerAddNewNestedForm()
+		}
+	}
 })
 
 const dynamicFormContext = useDynamicFormContext()
@@ -82,6 +86,7 @@ function getNestedFormValidator(){
 				link
 				icon="Plus"
 				@click="triggerAddNewNestedForm"
+				:disabled="model.length >= fieldInfo.detail.multipleMax"
 				style="margin-bottom: 18px;"
 			>
 				<span>
@@ -106,6 +111,7 @@ function getNestedFormValidator(){
 							icon="Close"
 							type="danger"
 							@click="()=>triggerRemoveNestedForm(formData)"
+							:disabled="model.length <= fieldInfo.detail.multipleMin"
 						/>
 						<span style="font-size: 14px">{{ fieldInfo.label+(index+1) }}</span>
 					</template>

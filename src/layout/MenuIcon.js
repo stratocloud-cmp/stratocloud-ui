@@ -139,6 +139,8 @@ export function getMenuItemIcon(menuName) {
             return resolveSvgIcon('Rdb')
         case '实例规格':
             return resolveSvgIcon('CloudDatabase')
+        case '非关系型实例':
+            return resolveSvgIcon('NoSql')
     }
 
     return 'MostlyCloudy'
