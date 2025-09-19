@@ -141,6 +141,10 @@ export function getMenuItemIcon(menuName) {
             return resolveSvgIcon('CloudDatabase')
         case '非关系型实例':
             return resolveSvgIcon('NoSql')
+        case '消息队列可用区':
+            return 'Grid'
+        case '消息队列实例':
+            return resolveSvgIcon('Mq', '20px')
     }
 
     return 'MostlyCloudy'
@@ -166,6 +170,8 @@ export function getSubMenuIcon(subMenuName) {
             return resolveSvgIcon('Container')
         case '云数据库':
             return resolveSvgIcon('CloudDatabase')
+        case '云消息队列':
+            return resolveSvgIcon('Mq', '20px')
     }
 
     return 'MostlyCloudy'

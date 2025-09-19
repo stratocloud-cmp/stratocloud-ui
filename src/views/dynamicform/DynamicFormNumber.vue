@@ -29,7 +29,7 @@ const props = defineProps({
 const rules = ref([])
 
 onMounted(()=>{
-	if(props.fieldInfo.detail?.defaultValue && !model.value){
+	if((props.fieldInfo.detail?.defaultValue || props.fieldInfo.detail?.defaultValue === 0) && !model.value){
 		model.value = props.fieldInfo.detail.defaultValue
 	}
 
