@@ -240,7 +240,7 @@ defineExpose({confirmCreate, confirmUpdate})
 		<ElCard
 			v-if="clickedCell"
 			:key="clickedCell.id"
-			style="position: absolute;top: 80px;right: 30px;width: 260px;max-height: 650px;overflow: auto;background-color: #07070e;z-index: 9999"
+			style="position: absolute;top: 80px;right: 30px;width: 260px;max-height: 650px;overflow: auto;z-index: 9999"
 		>
 			<BlueprintRelationshipForm
 				v-if="clickedCell.shape === 'edge'"

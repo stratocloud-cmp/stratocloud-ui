@@ -65,7 +65,7 @@ body{
 .strato-main-container-dark {
 	height: 100%;
 	overflow: hidden;
-	background-image: linear-gradient(-45deg, #150055 0%, #610099 100%);
+	background-image: linear-gradient(-45deg, #150055 0%, #006b99 100%);
 }
 
 .strato-main-container-light {

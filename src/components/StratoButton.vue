@@ -36,12 +36,12 @@ const attrs = useAttrs()
 
 <style lang="scss" scoped>
 .strato-button-primary{
-    background: linear-gradient(45deg, #00a3ff 0%, #513cc6 100%);
+    background: linear-gradient(45deg, #00a3ff 0%, #00a3ff 100%);
     border: 0;
 	font-weight: 400;
 }
 .strato-button-primary:hover{
-    background: linear-gradient(45deg, #68c8ff 0%, #6656c2 100%);
+    background: linear-gradient(45deg, #68c8ff 0%, #68c8ff 100%);
 }
 .strato-button-text{
     font-weight: 400;

@@ -15,7 +15,9 @@
                         <ElInput :spellcheck="false" @keyup.enter="onLogin" type="password" autocomplete="new-password" show-password v-model="loginForm.password" />
                     </ElFormItem>
                     <ElFormItem>
-                        <StratoButton :loading="loading" type="primary" @click="onLogin">登录</StratoButton>
+                        <StratoButton :loading="loading" type="primary" @click="onLogin">
+	                        登录
+                        </StratoButton>
                     </ElFormItem>
                 </ElForm>
             </div>
@@ -82,12 +84,12 @@ function onLogin(){
     justify-content: center;
     display: flex;
     align-items: center;
-    background: linear-gradient(to top, #23008b 0%, #610099 100%);
+    background: linear-gradient(to top, rgba(0, 1, 166, 0.78) 0%, rgba(0, 107, 153, 0.85) 100%);
 }
 .login-form-area{
     width: 350px;
-    background-color: rgb(26, 26, 42);
-    border-radius: 2px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 6px;
     box-shadow: 0 1px 4px 1px rgba(7,7,14,.2);
     font-weight: 600;
     font-size: large;

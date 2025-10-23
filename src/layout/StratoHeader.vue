@@ -223,10 +223,16 @@ const isDark = useDark()
 </script>
 <template>
     <div class="strato-header">
-	    <StratoIcon
-		    :style="{width: '200px', height: '30px', fill: isDark?'white':'#8100d1'}"
-		    icon-name="StratoCloudSmall">
-	    </StratoIcon>
+	    <div :style="{
+			width: '200px',
+			height: '30px',
+			fontFamily: 'Helvetica, Sans-serif',
+			fontSize: '28px',
+			marginLeft: '16px',
+			color: isDark?'white':'#409EFF'
+		}">
+		    <strong>Strato</strong>Cloud
+	    </div>
         <ElMenu :default-active="defaultActiveMenuIndex" style="margin-right: 200px;border: 0;" mode="horizontal" :ellipsis="false">
             <ElMenuItem
                 class="strato-menu-item"

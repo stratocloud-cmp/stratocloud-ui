@@ -227,7 +227,7 @@ defineExpose({confirmCreate, confirmUpdate})
 		</ElTooltip>
 		<ElCard
 			v-if="clickedNode"
-			style="position: absolute;top: 80px;right: 30px;width: 260px;background-color: #07070e;z-index: 9999"
+			style="position: absolute;top: 80px;right: 30px;width: 260px;z-index: 9999"
 			:key="clickedNode.label"
 		>
 			<WorkflowNodeForm
