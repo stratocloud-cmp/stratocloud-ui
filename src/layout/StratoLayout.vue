@@ -38,6 +38,7 @@ if (!useSessionStore().session){
 const isDark = useDark()
 
 </script>
+<!--suppress CssUnusedSymbol -->
 <style>
 body{
 	overflow: hidden;

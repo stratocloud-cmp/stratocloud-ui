@@ -15,7 +15,6 @@ import {useRouter} from 'vue-router'
 import StratoHeaderUserConfigButton from '@/layout/StratoHeaderUserConfigButton.vue'
 import StratoHeaderCartButton from '@/layout/StratoHeaderCartButton.vue'
 import StratoHeaderInternalMailButton from '@/layout/StratoHeaderInternalMailButton.vue'
-import StratoIcon from '@/components/StratoIcon.vue'
 import {useDark} from '@vueuse/core'
 
 const defaultActiveMenuIndex = ref('0')
