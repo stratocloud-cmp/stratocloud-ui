@@ -1,17 +1,25 @@
 <template>
     <div class="login-page">
-        <div class="login-form-area">
+        <div class="login-form-area" :style="{backgroundColor: isDark? 'rgb(55, 55, 55)':'rgb(245, 245, 245)'}">
             <div class="content">
                 <div style="display: flex; justify-content: center;">
-                    <img alt="StratoCloud" src="/svg/StratoCloud.svg" />
+	                <div :style="{
+						fontFamily: 'Helvetica, Sans-serif',
+						fontSize: '32px',
+						color: isDark?'white':'rgb(85, 85, 85)',
+						letterSpacing: '-1px',
+						cursor: 'default'
+					}">
+		                <b>strato</b>cloud
+	                </div>
                 </div>
                 <ElForm style="margin-top: 10px;" :model="loginForm" label-position="top" :disabled="loading">
                     <ElFormItem>
-                        <template #label><span style="color: white;">用户名</span></template>
+                        <template #label><span>用户名</span></template>
                         <ElInput :spellcheck="false" v-model="loginForm.username" />
                     </ElFormItem>
                     <ElFormItem>
-                        <template #label><span style="color: white;">密码</span></template>
+                        <template #label><span>密码</span></template>
                         <ElInput :spellcheck="false" @keyup.enter="onLogin" type="password" autocomplete="new-password" show-password v-model="loginForm.password" />
                     </ElFormItem>
                     <ElFormItem>
@@ -36,6 +44,7 @@ import { useSessionStore } from '@/stores/session'
 import StratoButton from '@/components/StratoButton.vue';
 import {useActiveMenuStore} from '@/stores/activeMenu.js'
 import {useRouter} from 'vue-router'
+import {useDark} from '@vueuse/core'
 
 const router = useRouter()
 
@@ -49,6 +58,8 @@ const loading = ref(false)
 const sessionStore = useSessionStore()
 
 const activeMenuStore = useActiveMenuStore()
+
+const isDark = useDark()
 
 function onLogin(){
     loading.value = true;
@@ -84,14 +95,18 @@ function onLogin(){
     justify-content: center;
     display: flex;
     align-items: center;
-    background: linear-gradient(to top, rgba(0, 1, 166, 0.78) 0%, rgba(0, 107, 153, 0.85) 100%);
+    background-image: url('/img/loginBackground.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position-x: 100%;
+	background-position-y: 70%;
 }
 .login-form-area{
     width: 350px;
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(245, 245, 245);
     border-radius: 6px;
     box-shadow: 0 1px 4px 1px rgba(7,7,14,.2);
-    font-weight: 600;
     font-size: large;
 
     .content{
@@ -101,12 +116,6 @@ function onLogin(){
     .el-button{
         width: 100%;
         margin-top: 10px;
-    }
-}
-
-.form-item{
-    .el-form-item__label{
-        color: aliceblue;
     }
 }
 

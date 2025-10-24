@@ -228,9 +228,11 @@ const isDark = useDark()
 			fontFamily: 'Helvetica, Sans-serif',
 			fontSize: '28px',
 			marginLeft: '16px',
-			color: isDark?'white':'#409EFF'
+			color: isDark?'white':'rgb(85, 85, 85)',
+			letterSpacing: '-1px',
+			cursor: 'default'
 		}">
-		    <strong>Strato</strong>Cloud
+		    <strong>strato</strong>cloud
 	    </div>
         <ElMenu :default-active="defaultActiveMenuIndex" style="margin-right: 200px;border: 0;" mode="horizontal" :ellipsis="false">
             <ElMenuItem
