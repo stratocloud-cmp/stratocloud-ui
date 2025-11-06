@@ -30,7 +30,7 @@ const emits = defineEmits(['confirm'])
 function confirmCreate(){
 	formRef.value.validate(valid => {
 		if (!valid) return
-		createTagEntry(formData.value).then(resp=>{
+		createTagEntry(formData.value).then(()=>{
 			drawerFlag.value = false
 			emits('confirm')
 		})
