@@ -38,7 +38,7 @@ function confirmCreate(){
 }
 </script>
 <template>
-	<StratoButton type="primary" plain @click="openDrawer">创建</StratoButton>
+	<StratoButton type="primary" @click="openDrawer">创建</StratoButton>
 
 	<StratoDrawer title="创建标签键" v-model="drawerFlag" size="600" @on-confirm="confirmCreate">
 		<ElForm ref="formRef" :model="formData" :rules="rules" label-position="top">

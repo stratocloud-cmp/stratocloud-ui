@@ -23,7 +23,9 @@ const props = defineProps({
 				dependsOn: [],
 				required: true,
 				conditions: [],
-				type: undefined
+				type: undefined,
+				properties: [],
+				filterPredicates: []
 			},
 		}
 	}
@@ -57,6 +59,42 @@ const isConditionsMatched = computed(
 	() => dynamicFormContext.isConditionsMatched(props.fieldInfo.detail.conditions)
 )
 
+const optionElements = computed(() => {
+	const elements = []
+	for (let i = 0; i < props.fieldInfo.detail.options.length; i++) {
+		const element = {
+			optionValue: props.fieldInfo.detail.options[i],
+			optionName: props.fieldInfo.detail.optionNames[i]
+		}
+
+		if(props.fieldInfo.detail.properties && props.fieldInfo.detail.properties.length>0){
+			for (let property of props.fieldInfo.detail.properties) {
+				element[property.name] = property.values[i]
+			}
+		}
+
+		elements.push(element)
+	}
+	return elements
+})
+
+const filteredElements = computed(() => {
+	let elements = optionElements.value
+	if(props.fieldInfo.detail.filterPredicates && props.fieldInfo.detail.filterPredicates.length>0){
+		props.fieldInfo.detail.filterPredicates.forEach(predicate => {
+			try {
+				const predicateFunction = new Function('formData', 'element', 'return '+predicate)
+				elements = elements.filter(
+					element => predicateFunction(dynamicFormContext.formDataRef.value, element)
+				)
+			}catch (e) {
+				console.error(e)
+			}
+		})
+	}
+	return elements
+})
+
 </script>
 
 <template>
@@ -83,10 +121,10 @@ const isConditionsMatched = computed(
 			:placeholder="fieldInfo.detail.placeholder ? fieldInfo.detail.placeholder : ('请选择'+fieldInfo.label)"
 		>
 			<ElOption
-				v-for="(item, index) in fieldInfo.detail.options"
-				:key="item"
-				:value="item"
-				:label="fieldInfo.detail.optionNames[index]"
+				v-for="item in filteredElements"
+				:key="item.optionValue"
+				:value="item.optionValue"
+				:label="item.optionName"
 			/>
 		</ElSelect>
 		<component
