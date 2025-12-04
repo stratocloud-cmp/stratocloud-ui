@@ -13,15 +13,20 @@ const props = defineProps({
 	},
 	tagEntryName: {
 		required: true
+	},
+	resourceType: {
+		required: false
 	}
 })
 
 watch(()=>props.tagEntryKey, ()=>{
 	pagingRequest.value.tagEntryKey = props.tagEntryKey
+	pagingRequest.value.resourceType = props.resourceType
 })
 
 const pagingRequest = ref({
 	tagEntryKey: props.tagEntryKey,
+	resourceType: props.resourceType
 })
 
 function handleValueSelected(tag){

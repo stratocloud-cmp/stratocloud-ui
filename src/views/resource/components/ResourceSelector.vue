@@ -168,6 +168,7 @@ watch(selectedTags, ()=>{
 		<template #header v-if="resourceTypeDef">
 			<TagValueSelectorGroup
 				:entry-paging-request="tagEntryPagingRequest"
+				:resource-type="resourceTypeId"
 				v-model="selectedTags"
 			/>
 		</template>

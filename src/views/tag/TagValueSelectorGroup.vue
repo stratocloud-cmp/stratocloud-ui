@@ -15,6 +15,9 @@ const props = defineProps({
 	entryPagingRequest: {
 		required: true
 	},
+	resourceType: {
+		required: false
+	},
 	span: {
 		required: false,
 		default: 12
@@ -114,6 +117,7 @@ defineExpose({validate})
 								v-model:tag-value-name="item.tagValueName"
 								:tag-entry-key="item.tagKey"
 								:tag-entry-name="item.tagKeyName"
+								:resource-type="resourceType"
 							/>
 						</ElCol>
 					</ElRow>
