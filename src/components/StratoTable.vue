@@ -6,10 +6,6 @@ import { debounce } from 'lodash'
 const loading = ref(false)
 
 const props = defineProps({
-    showSelection: {
-        default: true,
-        required: false
-    },
     remoteMethod:{},
     pagingRequest:{
         default: {},
@@ -40,6 +36,11 @@ const props = defineProps({
 		required: false,
 		default: undefined
 	},
+	highlightCurrentRow: {
+		required: false,
+		default: false,
+		type: Boolean
+	}
 })
 
 const pagination = ref({
@@ -52,9 +53,9 @@ const pagination = ref({
 
 const listData = ref([])
 
-const emit = defineEmits(['selectionChange', 'filterChange', 'listChange'])
+const emit = defineEmits(['selectionChange', 'filterChange', 'listChange', 'currentChange'])
 
-defineExpose({fetchData, getTotal})
+defineExpose({fetchData, getTotal, setCurrentRow})
 
 function onSelectionChange(selectedRows){
     emit('selectionChange', selectedRows)
@@ -62,6 +63,14 @@ function onSelectionChange(selectedRows){
 
 function onFilterChange(newFilters){
     emit('filterChange', newFilters)
+}
+
+function onCurrentChange(row){
+	emit('currentChange', row)
+}
+
+function setCurrentRow(row){
+	tableRef.value.setCurrentRow(row)
 }
 
 function onSortChange(change){
@@ -129,7 +138,7 @@ watch(props.pagingRequest, ()=>{
 
 watch(
     [
-        ()=>pagination.value.size, 
+        ()=>pagination.value.size,
         ()=>pagination.value.current,
         ()=>pagination.value.sortedBy,
         ()=>pagination.value.direction,
@@ -152,6 +161,8 @@ watch(
 		:row-key="rowKeyGetter"
 		@filter-change="onFilterChange"
 		@sort-change="onSortChange"
+		@current-change="onCurrentChange"
+		:highlight-current-row="highlightCurrentRow"
 		:max-height="props.maxHeight"
 		show-overflow-tooltip
 		:tooltip-options="{placement: 'bottom', enterable: true}"

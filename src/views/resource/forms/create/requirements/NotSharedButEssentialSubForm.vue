@@ -1,6 +1,7 @@
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import ResourceSelector from "@/views/resource/components/ResourceSelector.vue";
+import ResourceTableSelector from '@/views/resource/components/ResourceTableSelector.vue'
 
 const props = defineProps({
 	newRequirements: {
@@ -47,6 +48,11 @@ function validate(callback){
 
 defineExpose({validate})
 
+const formItemRefs = ref([])
+function clearValidation(index){
+	formItemRefs.value[index]?.clearValidate()
+}
+
 </script>
 
 <template>
@@ -56,17 +62,29 @@ defineExpose({validate})
 			<ElCol :span="isNested?24:20">
 				<template v-for="(newRequirement, index) in props.newRequirements">
 					<ElFormItem
+						ref="formItemRefs"
 						:label="isNested?requirementDef.relationshipSpec.requirementName:undefined"
 						:prop="index+'.targetResourceId'"
 						:rules="[{required: true, message: '请选择'+categoryName}]"
 						required
 						:show-message="false">
-						<ResourceSelector
-							v-model="newRequirement.targetResourceId"
-							:resource-type-id="requirementDef.targetSpec.resourceTypeId"
-							:disabled-flag-getter="disabledFlagGetter"
-							:placeholder="'请选择'+categoryName"
-						/>
+						<template v-if="requirementDef.relationshipSpec.selectType === 'TABLE'">
+							<ResourceTableSelector
+								v-model="newRequirement.targetResourceId"
+								:resource-category="requirementDef.targetSpec.resourceCategoryId"
+								:resource-type-id="requirementDef.targetSpec.resourceTypeId"
+								@clear-validation="() => clearValidation(index)"
+							/>
+						</template>
+						<template v-else>
+							<ResourceSelector
+								v-model="newRequirement.targetResourceId"
+								:resource-type-id="requirementDef.targetSpec.resourceTypeId"
+								:disabled-flag-getter="disabledFlagGetter"
+								:placeholder="'请选择'+categoryName"
+							/>
+						</template>
+
 					</ElFormItem>
 				</template>
 			</ElCol>

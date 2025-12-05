@@ -64,7 +64,6 @@ function removeModelItem(item){
 	if(index >= 0){
 		model.value.splice(index, 1)
 	}
-	console.log(model.value)
 }
 
 function validate(rule, value, callback){
