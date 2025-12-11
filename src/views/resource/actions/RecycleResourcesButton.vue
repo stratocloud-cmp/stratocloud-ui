@@ -5,6 +5,7 @@ import {ref} from 'vue'
 import StratoDrawer from '@/components/StratoDrawer.vue'
 import RecycleResourcesForm from '@/views/resource/forms/recycle/RecycleResourcesForm.vue'
 import DestroyResourcesRefundInquiry from '@/views/resource/forms/recycle/DestroyResourcesRefundInquiry.vue'
+import {Delete} from '@element-plus/icons-vue'
 
 const props = defineProps({
 	small: {
@@ -79,8 +80,8 @@ function openRecycleDrawer(){
 		:loading="buttonLoading"
 		@click="openRecycleDrawer"
 		:disabled="selectedResources.length === 0"
-		type="warning"
 		plain>
+		<ElIcon :color="selectedResources.length === 0 ? 'lightgrey':'orange'" size="14"><Delete /></ElIcon>
 		<span :style="small?{fontSize: '12px'}:{}">
 			{{recycleBinMode ? '销毁' : '回收'}}
 		</span>

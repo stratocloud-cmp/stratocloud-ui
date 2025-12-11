@@ -6,6 +6,7 @@ import StratoDrawer from '@/components/StratoDrawer.vue'
 import RunResourcesActionForm from '@/views/resource/forms/action/RunResourcesActionForm.vue'
 import RunActionsPriceInquiry from '@/views/resource/forms/action/RunActionsPriceInquiry.vue'
 import AddToCartButton from '@/views/cart/AddToCartButton.vue'
+import {SwitchButton, VideoPlay} from '@element-plus/icons-vue'
 
 const props = defineProps({
 	small: {
@@ -77,25 +78,6 @@ function openActionDrawer(){
 
 defineExpose({openActionDrawer})
 
-const redActions = [
-	'STOP', 'DESTROY_RESOURCE'
-]
-
-const greenActions = [
-	'START'
-]
-
-function getButtonType(action){
-	if(redActions.includes(action)){
-		return 'danger'
-	}
-
-	if(greenActions.includes(action)){
-		return 'success'
-	}
-
-	return undefined
-}
 
 function closeDrawer(){
 	drawerFlag.value = false
@@ -111,8 +93,9 @@ function closeDrawer(){
 			@click="openActionDrawer"
 			:disabled="disabled"
 			:disabled-message="disabledMessage?disabledMessage:undefined"
-			:type="getButtonType(action.id)"
 			plain>
+			<ElIcon v-if="action.id==='START'" :color="disabled ? 'lightgrey':'green'" size="14"><VideoPlay /></ElIcon>
+			<ElIcon v-if="action.id==='STOP'" :color="disabled ? 'lightgrey':'crimson'" size="14"><SwitchButton /></ElIcon>
 			<span :style="small?{fontSize: '12px'}:{}">{{action.name}}</span>
 		</StratoButton>
 	</template>
