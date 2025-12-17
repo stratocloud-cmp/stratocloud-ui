@@ -16,6 +16,7 @@ import StratoDrawer from '@/components/StratoDrawer.vue'
 import CreateAccountForm from '@/views/account/CreateAccountForm.vue'
 import UpdateAccountForm from '@/views/account/UpdateAccountForm.vue'
 import AccountState from '@/views/account/AccountState.vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const activeJobStore = useActiveJobStore()
 
@@ -192,7 +193,10 @@ function onDelete(){
 		<ElTableColumn prop="name" label="名称" sortable="custom" />
 		<ElTableColumn prop="providerId" label="云平台" sortable="custom">
 			<template #default="scope">
-				{{scope.row.providerName}}
+				<span>
+					<ProviderLogo :logo-id="scope.row.providerId" type="Provider" />
+					{{scope.row.providerName}}
+				</span>
 			</template>
 		</ElTableColumn>
 		<ElTableColumn prop="state" label="状态" sortable="custom">

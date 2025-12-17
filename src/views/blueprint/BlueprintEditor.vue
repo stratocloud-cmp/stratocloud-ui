@@ -56,11 +56,35 @@ async function initializeBlueprint(){
 			shape: 'custom-rect',
 			label: nodeData.nodeName,
 			data: nodeData,
+			markup: [
+				{
+					tagName: 'rect', // 标签名称
+					selector: 'body', // 选择器
+				},
+				{
+					tagName: 'image',
+					selector: 'logo',
+				},
+				{
+					tagName: 'text',
+					selector: 'label',
+				},
+			],
 			attrs: {
 				body: {
-					rx: 10,
-					ry: 10,
+					stroke: '#8f8f8f',
+					strokeWidth: 1,
+					fill: '#fff',
+					rx: 6,
+					ry: 6,
 				},
+				logo: {
+					'xlink:href': '/api/resource-service/provider-logo?type=ResourceType&id='+nodeData.resourceTypeId,
+					width: 16,
+					height: 16,
+					x: 3,
+					y: 3,
+				}
 			},
 			ports: {
 				items: [{
@@ -256,7 +280,7 @@ defineExpose({confirmCreate, confirmUpdate})
 	</div>
 	<div style="width: 100%;height: 90%">
 		<div :id="mainContainerId">
-			<div style="height: 600px;overflow-y: scroll;overflow-x: hidden">
+			<div style="height: 100%">
 				<div :id="stencilContainerId"></div>
 			</div>
 			<div :id="graphContainerId"></div>
@@ -273,7 +297,7 @@ defineExpose({confirmCreate, confirmUpdate})
 }
 #blueprint-stencil-container {
 	width: 300px;
-	height: 4000px;
+	height: 100%;
 	position: relative;
 }
 #blueprint-graph-container {
@@ -283,9 +307,6 @@ defineExpose({confirmCreate, confirmUpdate})
 .x6-widget-stencil  {
 	background-color: rgba(128,128,128,0.5);
 	height: 100%;
-}
-.x6-widget-stencil-content{
-	overflow: hidden;
 }
 .x6-widget-stencil-title {
 	color: rgba(255, 255, 255, 0.8);

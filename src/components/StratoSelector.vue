@@ -137,6 +137,9 @@ function onSelectChange(value){
 		<template #header v-if="$slots.header">
 			<slot name="header"></slot>
 		</template>
+		<template #label="{ label, value }" v-if="$slots.label">
+			<slot name="label" :label="label" :value="value"></slot>
+		</template>
 		<ElOption
 			v-for="item in listData"
 			:disabled="disabledOptionPredicate(item, response)"

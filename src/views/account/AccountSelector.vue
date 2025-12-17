@@ -3,6 +3,7 @@ import StratoPagingSelector from "@/components/StratoPagingSelector.vue";
 import {ref, watch} from "vue";
 import {describeAccounts} from "@/api/account.js";
 import {useAccountContext} from '@/views/resource/composables/AccountContext.js'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const accountId = defineModel()
 
@@ -68,8 +69,17 @@ function onAccountChange(item){
 		id-filter-key="accountIds"
 	>
 		<template #default="scope">
-			<span style="float: left">{{scope.row.name}}</span>
+			<span style="float: left">
+				<ProviderLogo style="margin-right: 2px" :logo-id="scope.row.providerId" type="Provider" />
+				{{scope.row.name}}
+			</span>
 			<span style="float: right;color: grey">{{scope.row.description}}</span>
+		</template>
+		<template #label="{ label }">
+			<span style="float: left">
+				<ProviderLogo v-if="providerId" :logo-id="providerId" type="Provider" />
+				{{label}}
+			</span>
 		</template>
 	</StratoPagingSelector>
 </template>

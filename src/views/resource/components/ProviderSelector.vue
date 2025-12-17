@@ -2,6 +2,7 @@
 import StratoSelector from '@/components/StratoSelector.vue'
 import {describeProviders} from '@/api/resource.js'
 import {ref} from 'vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const providerId = defineModel()
 
@@ -38,7 +39,20 @@ const request = ref({})
 		:request="request"
 		:multiple="multiple"
 		:disabled="disabled"
-	/>
+	>
+		<template #default="scope">
+			<span style="float: left">
+				<ProviderLogo style="margin-right: 2px" :logo-id="scope.row.id" type="Provider" />
+				{{scope.row.name}}
+			</span>
+		</template>
+		<template #label="{ label }">
+			<span style="float: left">
+				<ProviderLogo v-if="providerId" :logo-id="providerId" type="Provider" />
+				{{label}}
+			</span>
+		</template>
+	</StratoSelector>
 </template>
 
 <style scoped>

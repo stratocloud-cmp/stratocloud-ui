@@ -14,6 +14,7 @@ import ResourceQuickStats from '@/views/resource/components/ResourceQuickStats.v
 import StratoTextEditor from '@/components/StratoTextEditor.vue'
 import {updateDescription} from '@/api/resource.js'
 import ResourceMetrics from '@/views/resource/components/ResourceMetrics.vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const props = defineProps({
 	resource: {
@@ -63,6 +64,7 @@ function onRefresh(){
 			<template #label>
 				<div style="width: 100px">类型</div>
 			</template>
+			<ProviderLogo :logo-id="resource.type" type="ResourceType" />
 			{{ resource.typeName }}
 		</ElDescriptionsItem>
 		<ElDescriptionsItem label="云账号" :span="2">

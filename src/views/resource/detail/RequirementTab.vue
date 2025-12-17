@@ -17,6 +17,7 @@ import ResourceLink from '@/views/resource/components/ResourceLink.vue'
 import ChangeEssentialTargetPriceInquiry
 	from '@/views/resource/forms/relationship/ChangeEssentialTargetPriceInquiry.vue'
 import AddToCartButton from '@/views/cart/AddToCartButton.vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const props = defineProps({
     resource:{
@@ -179,10 +180,10 @@ function closeConnectDrawer(){
 		</ElPopconfirm>
 		<ElInput size="small" style="float: right; width: 20%;" v-model="pagingRequest.search" suffix-icon="search" />
 	</div>
-    <StratoTable        
+    <StratoTable
         ref="requirementTableRef"
-        :paging-request="pagingRequest" 
-        :remote-method="describeRequirements" 
+        :paging-request="pagingRequest"
+        :remote-method="describeRequirements"
         @selection-change="handleSelectionChange"
         @filter-change="handlerFilterChange"
         :default-page-size="5"
@@ -200,7 +201,10 @@ function closeConnectDrawer(){
         </ElTableColumn>
         <ElTableColumn prop="targetType" label="类型">
             <template #default="scope">
-                <span>{{ scope.row.target.typeName }}</span>
+                <span>
+	                <ProviderLogo :logo-id="scope.row.target.type" type="ResourceType" />
+	                {{ scope.row.target.typeName }}
+                </span>
             </template>
         </ElTableColumn>
         <ElTableColumn prop="targetState" label="资源状态">

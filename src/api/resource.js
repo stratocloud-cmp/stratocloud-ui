@@ -64,6 +64,14 @@ export const describeResourceTypes = data => {
     });
 };
 
+export const describeSimpleResourceTypes = data => {
+    return request({
+        url: '/resource-service/describe-simple-resource-types',
+        method: 'post',
+        data
+    });
+};
+
 export const describeRequirements = data => {
     return request({
         url: '/resource-service/describe-requirements',

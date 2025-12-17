@@ -13,6 +13,7 @@ import {runAsyncJob} from '@/api/asyncJob.js'
 import {useActiveJobStore} from '@/stores/activeJob.js'
 import ResourceLink from '@/views/resource/components/ResourceLink.vue'
 import ResourceActionButtonsGroup from '@/views/resource/actions/ResourceActionButtonsGroup.vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const props = defineProps({
     resource:{
@@ -119,7 +120,10 @@ const selectedResources = computed(() => selectedCapabilities.value.map(c => c.s
         </ElTableColumn>
         <ElTableColumn prop="sourceType" label="类型">
             <template #default="scope">
-                <span>{{ scope.row.source.typeName }}</span>
+                <span>
+	                <ProviderLogo :logo-id="scope.row.source.type" type="ResourceType" />
+	                {{ scope.row.source.typeName }}
+                </span>
             </template>
         </ElTableColumn>
         <ElTableColumn prop="sourceState" label="资源状态">

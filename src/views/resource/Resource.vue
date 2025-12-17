@@ -21,6 +21,7 @@ import TagValueSelectorGroup from '@/views/tag/TagValueSelectorGroup.vue'
 import {isEqual} from 'lodash'
 import RecycleBinButtonsGroup from '@/views/resource/actions/RecycleBinButtonsGroup.vue'
 import ResourceQuickStats from '@/views/resource/components/ResourceQuickStats.vue'
+import ProviderLogo from '@/views/resource/components/ProviderLogo.vue'
 
 const props = defineProps({
     recycled: {
@@ -282,7 +283,10 @@ const isMonitoredCategory = computed(checkIsMonitoredCategory)
         </ElTableColumn>
         <ElTableColumn prop="type" label="类型" sortable="custom">
             <template #default="scope">
-                <span>{{ scope.row.typeName }}</span>
+                <span>
+	                <ProviderLogo :logo-id="scope.row.type" type="ResourceType" />
+	                {{ scope.row.typeName }}
+                </span>
             </template>
         </ElTableColumn>
         <ElTableColumn

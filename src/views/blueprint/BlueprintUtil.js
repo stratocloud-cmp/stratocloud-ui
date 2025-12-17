@@ -7,11 +7,10 @@ import { Snapline } from '@antv/x6-plugin-snapline'
 import { Keyboard } from '@antv/x6-plugin-keyboard'
 import { Clipboard } from '@antv/x6-plugin-clipboard'
 import { History } from '@antv/x6-plugin-history'
-import { Scroller } from '@antv/x6-plugin-scroller'
 
 import {DagreLayout} from '@antv/layout'
 
-import {describeResourceTypes} from '@/api/resource.js'
+import {describeSimpleResourceTypes} from '@/api/resource.js'
 
 export function initializeBlueprintGraph(stencilContainerId, graphContainerId){
     const graph = createBlueprintGraph(graphContainerId)
@@ -62,8 +61,8 @@ function initializeNodes(ports, graph, stencil) {
         'custom-rect',
         {
             inherit: 'rect',
-            width: 100,
-            height: 36,
+            width: 120,
+            height: 50,
             attrs: {
                 body: {
                     strokeWidth: 1,
@@ -82,7 +81,7 @@ function initializeNodes(ports, graph, stencil) {
 
 
 
-    describeResourceTypes({}).then(resp => {
+    describeSimpleResourceTypes({}).then(resp => {
         const providerNamesMap = new Map()
         const providerNodesMap = new Map()
         for (let resourceType of resp.resourceTypes) {
@@ -97,11 +96,35 @@ function initializeNodes(ports, graph, stencil) {
                 shape: 'custom-rect',
                 label: resourceType.spec.resourceTypeName,
                 data: nodeData,
+                markup: [
+                    {
+                        tagName: 'rect', // 标签名称
+                        selector: 'body', // 选择器
+                    },
+                    {
+                        tagName: 'image',
+                        selector: 'logo',
+                    },
+                    {
+                        tagName: 'text',
+                        selector: 'label',
+                    },
+                ],
                 attrs: {
                     body: {
-                        rx: 4,
-                        ry: 4,
+                        stroke: '#8f8f8f',
+                        strokeWidth: 1,
+                        fill: '#fff',
+                        rx: 6,
+                        ry: 6,
                     },
+                    logo: {
+                        'xlink:href': '/api/resource-service/provider-logo?type=ResourceType&id='+resourceType.spec.resourceTypeId,
+                        width: 16,
+                        height: 16,
+                        x: 3,
+                        y: 3,
+                    }
                 },
             }
 
@@ -126,11 +149,11 @@ function initializeNodes(ports, graph, stencil) {
                 title: providerNamesMap.get(providerId),
                 name: providerId,
                 collapsable: true,
-                graphHeight: (nodesCount/2)*42+50,
+                graphHeight: (nodesCount/2)*60+50,
                 layoutOptions: {
                     columns: 2,
-                    columnWidth: 110,
-                    rowHeight: 42,
+                    columnWidth: 130,
+                    rowHeight: 60,
                 },
             })
         }
@@ -309,12 +332,13 @@ function createStencil(graph, stencilContainerId) {
         stencilGraphWidth: 300,
         stencilGraphHeight: 30,
         collapsable: true,
+        height: '100px',
 
         groups: [],
         layoutOptions: {
             columns: 2,
-            columnWidth: 110,
-            rowHeight: 42,
+            columnWidth: 130,
+            rowHeight: 60,
         },
     })
 
