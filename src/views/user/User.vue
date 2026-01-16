@@ -69,19 +69,15 @@
 <script setup>
 import {
 	describeUsers, unlockUsers, enableUsers,
-	disableUsers, saveUser, deleteUsers, updateUser,
-	batchAssignRoleToUser, batchRemoveRoleFromUser, changePassword
+	disableUsers, saveUser, deleteUsers
 } from '@/api/user'
 import StratoButton from '@/components/StratoButton.vue';
-import { ElIcon, ElInput, ElPopconfirm, ElSwitch, ElTableColumn } from 'element-plus';
+import { ElIcon, ElInput, ElPopconfirm, ElTableColumn } from 'element-plus';
 import { ref } from 'vue';
 import CreateUserForm from './CreateUserForm.vue'
-import UpdateUserForm from './UpdateUserForm.vue'
 import StratoDrawer from '@/components/StratoDrawer.vue';
 import StratoTable from '@/components/StratoTable.vue';
-import Role from '../role/Role.vue';
 import {Lock, Unlock, UserFilled} from '@element-plus/icons-vue'
-import ChangePasswordForm from '@/views/user/ChangePasswordForm.vue'
 import UserActionsColumn from '@/views/user/UserActionsColumn.vue'
 
 const props = defineProps({
