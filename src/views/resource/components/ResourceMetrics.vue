@@ -185,7 +185,7 @@ function formatTime(time){
 <template>
 	<ElButton type="primary" link @click="openDetailDrawer">详情</ElButton>
 	<Teleport to="body">
-		<StratoDrawer v-model="detailDrawerFlag" title="监控详情" size="800">
+		<StratoDrawer v-model="detailDrawerFlag" title="监控详情" size="800" no-confirm>
 			<div v-if="detailDrawerFlag">
 				<div>
 					<ElDatePicker
@@ -207,15 +207,17 @@ function formatTime(time){
 						v-for="group in metricGroups"
 						:label="group.group.name"
 						:name="group.group.id">
-						<ElRow v-if="group.metrics">
-							<ElCol v-for="metric in group.metrics" :span="24">
-								<ElCard style="margin-bottom: 24px;background-color: rgba(0,0,0,0)">
+						<ElRow v-if="group.metrics" :gutter="24">
+							<ElCol v-for="metric in group.metrics" :span="12">
+								<ElCard
+                    bodyStyle="padding: 0"
+                    style="margin-bottom: 24px;background-color: rgba(0,0,0,0)">
 									<template #header>
 										{{metric.metric.metricLabel+(metric.metric.metricUnit?('('+metric.metric.metricUnit+')'):'')}}
 									</template>
 									<StratoLineChart
 										:render-version="renderVersion"
-										style="height: 300px"
+										style="height: 240px"
 										:chart-id="metric.metric.metricName"
 										channel-x="time"
 										channel-y="value"

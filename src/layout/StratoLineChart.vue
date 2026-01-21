@@ -1,6 +1,6 @@
 <script setup>
 import { Chart } from '@antv/g2';
-import {onMounted, ref, watch} from 'vue'
+import {onMounted, watch} from 'vue'
 import {useDark} from '@vueuse/core'
 
 const props = defineProps({
