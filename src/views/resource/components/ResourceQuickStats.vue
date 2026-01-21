@@ -2,6 +2,7 @@
 
 import {onMounted, onUnmounted, ref} from 'vue'
 import {describeResourceQuickStats} from '@/api/resource.js'
+import {useDark} from "@vueuse/core";
 
 const props = defineProps({
 	resourceId: {
@@ -53,6 +54,8 @@ const loading = ref(false)
 
 const error = ref(false)
 
+const isDark = useDark();
+
 </script>
 
 <template>
@@ -69,9 +72,10 @@ const error = ref(false)
 								:stroke-width="16"
 								text-inside
 								:percentage="item.value"
-								color="darkgreen"
+								:color="isDark?'darkgreen':'lightgreen'"
 							>
-								{{item.name}}
+                <span v-if="isDark">{{item.name}}</span>
+                <span v-else style="color: black">{{item.name}}</span>
 							</ElProgress>
 						</template>
 						<template v-else>
