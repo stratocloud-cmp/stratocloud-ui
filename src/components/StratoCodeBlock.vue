@@ -12,8 +12,6 @@ import {
 
 import * as monaco from 'monaco-editor'
 import { editorProps } from './MonacoEditorType'
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
-import JsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
 
 import {useDark} from '@vueuse/core'
 
@@ -23,14 +21,6 @@ export default defineComponent({
 	emits: ['update:modelValue', 'change', 'editor-mounted'],
 	setup(props, { emit }) {
 
-		// noinspection JSUnusedGlobalSymbols
-		window.MonacoEnvironment = {
-			getWorker(_: string, label: string) {
-				if(label === 'json')
-					return new JsonWorker()
-				return new EditorWorker()
-			},
-		}
 		let editor: any
 		const codeEditBox = ref()
 		const isDark = useDark()

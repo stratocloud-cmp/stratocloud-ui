@@ -5,6 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 import * as path from 'node:path'
 
+import monacoEditorPlugin from 'vite-plugin-monaco-editor';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
@@ -25,7 +27,8 @@ export default defineConfig({
         iconDirs: [path.resolve(process.cwd(), 'public/svg')],
         // 指定symbolId格式
         symbolId: 'icon-[dir]-[name]',
-      })
+      }),
+      monacoEditorPlugin.default({})
   ],
 
   optimizeDeps: {

@@ -59,7 +59,7 @@ export const editorProps = {
                 // foldingStrategy: 'indentation',
                 foldingStrategy: 'indentation', // 折叠方式  auto | indentation
                 // renderLineHighlight: 'all',
-                renderLineHighlight: 'all' || 'line' || 'none' || 'gutter', // 行亮
+                renderLineHighlight: 'all',
                 selectOnLineNumbers: true, // 显示行号
                 minimap: {
                     // 关闭小地图
